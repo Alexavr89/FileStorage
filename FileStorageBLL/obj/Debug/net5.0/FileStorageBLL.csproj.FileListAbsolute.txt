@@ -1,0 +1,15 @@
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\bin\Debug\net5.0\FileStorageBLL.deps.json
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\bin\Debug\net5.0\FileStorageBLL.dll
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\bin\Debug\net5.0\ref\FileStorageBLL.dll
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\bin\Debug\net5.0\FileStorageBLL.pdb
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\bin\Debug\net5.0\FileStorageDAL.dll
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\bin\Debug\net5.0\FileStorageDAL.pdb
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.csproj.AssemblyReference.cache
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.AssemblyInfoInputs.cache
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.AssemblyInfo.cs
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.csproj.CoreCompileInputs.cache
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.csproj.CopyComplete
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.dll
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\ref\FileStorageBLL.dll
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.pdb

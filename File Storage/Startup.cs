@@ -1,19 +1,17 @@
-using Microsoft.AspNetCore.Authentication;
+using FileStorageBLL.Interfaces;
+using FileStorageBLL.Services;
+using FileStorageDAL;
+using FileStorageDAL.Repository;
+using FileStorageDAL.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace File_Storage
 {
@@ -31,8 +29,14 @@ namespace File_Storage
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
-
+            services.AddDbContext<FileStorageDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IRepositoryBase<StorageFile>, RepositoryBase<StorageFile>>();
+            services.AddScoped<IStorageFileRepository, StorageFileRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "File_Storage", Version = "v1" });
