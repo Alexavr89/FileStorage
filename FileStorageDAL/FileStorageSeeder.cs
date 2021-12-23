@@ -9,17 +9,15 @@ namespace FileStorageDAL
 {
     public static class FileStorageSeeder
     {
-        static RoleManager<IdentityRole> roleManager;
         static UserManager<ApplicationUser> userManager;
-
         public static void SeedFiles(FileStorageDbContext context)
         {
             if (!context.StorageFiles.Any())
             {
                 var files = new List<StorageFile>
                 {
-                    new StorageFile {Name = "text" },
-                    new StorageFile {Name = "image" },
+                    new StorageFile {Name = "text", IsPublic = true, ApplicationUser = context.Users.First(x=>x.UserName == "User")},
+                    new StorageFile {Name = "image", IsPublic = false, ApplicationUser = context.Users.First(x=>x.UserName == "User") },
 
                 };
                 var roles = new List<IdentityRole>
