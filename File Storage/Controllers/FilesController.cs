@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,6 +12,18 @@ namespace File_Storage.Controllers
     [ApiController]
     public class FilesController : ControllerBase
     {
+        [Authorize(Roles="User")]
+        [HttpPost]
+        public async Task<IActionResult> DownloadFile()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UploadFile()
+        {
+            throw new NotImplementedException();
+        }
         // GET: api/<ValuesController>
         [HttpGet]
         public IEnumerable<string> Get()
