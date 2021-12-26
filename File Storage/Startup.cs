@@ -1,18 +1,20 @@
 using FileStorageBLL.Interfaces;
 using FileStorageBLL.Services;
 using FileStorageDAL;
+using FileStorageDAL.Entities;
 using FileStorageDAL.Repository;
 using FileStorageDAL.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
-
+using System;
 
 namespace File_Storage
 {
@@ -32,12 +34,14 @@ namespace File_Storage
                 .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
             services.AddDbContext<FileStorageDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")),ServiceLifetime.Transient);
+
             services.AddControllers();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IRepositoryBase<StorageFile>, RepositoryBase<StorageFile>>();
             services.AddScoped<IStorageFileRepository, StorageFileRepository>();
+            services.AddIdentityCore<ApplicationUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<FileStorageDbContext>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "File_Storage", Version = "v1" });
@@ -45,7 +49,7 @@ namespace File_Storage
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, FileStorageDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
 
             if (env.IsDevelopment())
@@ -66,6 +70,7 @@ namespace File_Storage
             {
                 endpoints.MapControllers();
             });
+            FileStorageSeeder.SeedFiles(context, userManager, roleManager);
         }
     }
 }

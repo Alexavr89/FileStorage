@@ -1,40 +1,78 @@
 ﻿using FileStorageDAL.Entities;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
 namespace FileStorageDAL
 {
-    public static class FileStorageSeeder
+    public class FileStorageSeeder
     {
-        static UserManager<ApplicationUser> userManager;
-        public static void SeedFiles(FileStorageDbContext context)
+        public static void SeedFiles(FileStorageDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (!context.StorageFiles.Any())
             {
+                var hasher = new PasswordHasher<ApplicationUser>();
+                var file1 = new StorageFile
+                {
+                    IsPublic = true,
+                    Created = DateTime.Now,
+                    Name = "First file",
+                    Extension = "txt",
+                    Id = 1
+                };
+                var file2 = new StorageFile
+                {
+                    IsPublic = false,
+                    Created = DateTime.Now,
+                    Name = "Second file",
+                    Extension = "pdf",
+                    Id = 2
+                };
                 var files = new List<StorageFile>
                 {
-                    new StorageFile {Name = "text", IsPublic = true, ApplicationUser = context.Users.First(x=>x.UserName == "User")},
-                    new StorageFile {Name = "image", IsPublic = false, ApplicationUser = context.Users.First(x=>x.UserName == "User") },
+                    file1, file2
+                };
+                var user1 = new ApplicationUser
+                {
+                    UserName = "admin",
+                    PasswordHash = hasher.HashPassword(null, "Admin"),
+                    NormalizedUserName = "Admin",
+                    Created = DateTime.Now,
+                    StorageFiles = files,
+                };
+                var user2 = new ApplicationUser
+                {
+                    UserName = "user",
+                    PasswordHash = hasher.HashPassword(null, "User"),
+                    NormalizedUserName = "User",
+                    Created = DateTime.Now,
+                    StorageFiles = files,
+                };
+                var role1 = new IdentityRole
+                {
+                    Name = "Admin",
+                };
+                var role2 = new IdentityRole
+                {
+                    Name = "User"
+                };
 
-                };
-                var roles = new List<IdentityRole>
+                var res = userManager.CreateAsync(user1, "$aquaFor123");
+                if (res.Result.Succeeded)
                 {
-                    new IdentityRole{ Name = "Admin"},
-                    new IdentityRole { Name = "User"}
-                };
-                var users = new List<ApplicationUser>
-                {
-                    new ApplicationUser {UserName = "Admin"},
-                    new ApplicationUser {UserName = "User"}
-                };
+                    roleManager.CreateAsync(role1).Wait();
+                }
+
+                userManager.AddToRoleAsync(user1, "Admin").Wait();
+
+                userManager.CreateAsync(user2, "#sometimeOne123").Wait();
                 
-                userManager.AddToRoleAsync(context.Users.First(x=>x.UserName == "Admin"),"Admin");
-                userManager.AddToRoleAsync(context.Users.First(x=>x.UserName == "User"),"User");
-                context.AddRange(files, roles, users);
-                context.SaveChanges();
+                roleManager.CreateAsync(role2).Wait();
+
+                userManager.AddToRoleAsync(user2, "User").Wait();
+                context.SaveChangesAsync();
             }
         }
     }

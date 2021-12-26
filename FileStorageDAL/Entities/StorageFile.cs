@@ -8,7 +8,7 @@ namespace FileStorageDAL
     public class StorageFile
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         [Required]
         [MaxLength(300)]
         public string Name { get; set; }
@@ -19,7 +19,6 @@ namespace FileStorageDAL
         [Required]
         [MaxLength(900)]
         public string RelativePath { get; set; }
-        public virtual Guid ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         [DefaultValue(false)]
         public bool IsRecycled { get; set; }

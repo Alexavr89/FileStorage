@@ -6,7 +6,7 @@ using System;
 
 namespace FileStorageDAL
 {
-    public class FileStorageDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
+    public class FileStorageDbContext : IdentityDbContext<ApplicationUser>
     {
         public FileStorageDbContext(DbContextOptions options) : base(options)
         {
@@ -19,8 +19,7 @@ namespace FileStorageDAL
 
             builder.Entity<StorageFile>()
                 .HasOne(storageItem => storageItem.ApplicationUser)
-                .WithMany(user => user.StorageFiles)
-                .HasForeignKey(storageItem => storageItem.ApplicationUserId);
+                .WithMany(user => user.StorageFiles);
         }
     }
 }

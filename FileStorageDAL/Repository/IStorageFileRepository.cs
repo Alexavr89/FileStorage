@@ -10,18 +10,18 @@ namespace FileStorageDAL.Repository
     {
         Task<(IEnumerable<StorageFile> files, int count)> GetPrivateFilesByUserAsync(ApplicationUser user, StorageFilesRequest filesRequest);
 
-        Task<StorageFile> GetPrivateFileByIdAsync(Guid fileId);
+        Task<StorageFile> GetPrivateFileByIdAsync(int fileId);
 
         Task<(IEnumerable<StorageFile> files, int count)> GetRecycledFilesByUserAsync(ApplicationUser user, StorageFilesRequest filesRequest);
 
-        Task<StorageFile> GetRecycledFileByIdAsync(Guid fileId);
+        Task<StorageFile> GetRecycledFileByIdAsync(int fileId);
 
         Task<(IEnumerable<StorageFile> files, int count)> GetPublicFilesAsync(StorageFilesRequest filesRequest);
 
-        Task<StorageFile> GetPublicFileByIdAsync(Guid fileId);
+        Task<StorageFile> GetPublicFileByIdAsync(int fileId);
 
         Task<(IEnumerable<StorageFile> files, int count)> GetAllFilesAsync(StorageFilesRequest filesRequest);
 
-        Task<StorageFile> GetFileByFileIdAsync(Guid fileId);
+        Task<StorageFile> GetFileByFileIdAsync(int fileId);
     }
 }

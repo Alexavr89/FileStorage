@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FileStorageDAL;
+using FileStorageDAL.UnitOfWork;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,7 +13,12 @@ namespace File_Storage.Controllers
     [ApiController]
     public class FilesController : ControllerBase
     {
-        [Authorize(Roles="User")]
+        private readonly IUnitOfWork _unitOfWork;
+        public FilesController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+        [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<IActionResult> DownloadFile()
         {
@@ -24,24 +30,12 @@ namespace File_Storage.Controllers
         {
             throw new NotImplementedException();
         }
-        // GET: api/<ValuesController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
         // GET api/<ValuesController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
-        }
-
-        // POST api/<ValuesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
         }
 
         // PUT api/<ValuesController>/5
@@ -52,8 +46,16 @@ namespace File_Storage.Controllers
 
         // DELETE api/<ValuesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteFile(int id)
         {
+
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public Task<StorageFile> GetFileByName(int id)
+        {
+            return _unitOfWork.StorageFiles.GetPrivateFileByIdAsync(id);
         }
     }
 }

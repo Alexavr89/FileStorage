@@ -32,14 +32,14 @@ namespace FileStorageDAL.Repository
             return (resultfiles, totalCount);
         }
 
-        public async Task<StorageFile> GetFileByFileIdAsync(Guid fileId)
+        public async Task<StorageFile> GetFileByFileIdAsync(int fileId)
         {
             return await _context.StorageFiles
                  .FirstOrDefaultAsync(
                      file => file.Id == fileId);
         }
 
-        public async Task<StorageFile> GetPrivateFileByIdAsync(Guid fileId)
+        public async Task<StorageFile> GetPrivateFileByIdAsync(int fileId)
         {
             return await _context.StorageFiles
                 .FirstOrDefaultAsync(
@@ -65,7 +65,8 @@ namespace FileStorageDAL.Repository
             return (resultCollection, totalCount);
         }
 
-        public async Task<StorageFile> GetPublicFileByIdAsync(Guid fileId)
+
+        public async Task<StorageFile> GetPublicFileByIdAsync(int fileId)
         {
             return await _context.StorageFiles
             .FirstOrDefaultAsync(
@@ -90,7 +91,8 @@ namespace FileStorageDAL.Repository
             return (resultfiles, totalCount);
         }
 
-        public async Task<StorageFile> GetRecycledFileByIdAsync(Guid fileId)
+
+        public async Task<StorageFile> GetRecycledFileByIdAsync(int fileId)
         {
             return await _context.StorageFiles
             .FirstOrDefaultAsync(

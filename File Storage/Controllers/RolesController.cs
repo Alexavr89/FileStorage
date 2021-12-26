@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
@@ -25,7 +24,7 @@ namespace File_Storage.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateRole([FromBody]IdentityRole model)
+        public async Task<IActionResult> CreateRole([FromBody] IdentityRole model)
         {
             try
             {
@@ -60,7 +59,7 @@ namespace File_Storage.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> EditRole([FromBody]IdentityRole model)
+        public async Task<IActionResult> EditRole([FromBody] IdentityRole model)
         {
             var role = await _roleManager.FindByIdAsync(model.Id);
 

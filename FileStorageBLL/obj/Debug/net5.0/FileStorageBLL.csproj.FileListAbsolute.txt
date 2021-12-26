@@ -13,3 +13,6 @@ C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\Fil
 C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.dll
 C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\ref\FileStorageBLL.dll
 C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.pdb
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\bin\Debug\net5.0\FileStorageBLL.runtimeconfig.json
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\bin\Debug\net5.0\FileStorageBLL.runtimeconfig.dev.json
+C:\Users\Alexander\source\repos\file-storage\FileStorageBLL\obj\Debug\net5.0\FileStorageBLL.genruntimeconfig.cache

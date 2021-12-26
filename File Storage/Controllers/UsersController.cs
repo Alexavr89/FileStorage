@@ -37,9 +37,9 @@ namespace File_Storage.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetUser(string id)
+        public Task<ApplicationUser> GetUser(string id)
         {
-            return (IActionResult)_userManager.FindByIdAsync(id);
+            return _userManager.FindByIdAsync(id);
         }
 
         [HttpPut]
@@ -52,7 +52,7 @@ namespace File_Storage.Controllers
             }
             await _userManager.UpdateAsync(user);
             await _unitOfWork.SaveAsync();
-            return CreatedAtAction("GetUser", new { id = newuser.Id}, newuser);
+            return CreatedAtAction("GetUser", new { id = newuser.Id }, newuser);
         }
 
         [HttpDelete("{id}")]
