@@ -68,7 +68,7 @@ namespace FileStorageDAL
                 userManager.AddToRoleAsync(user1, "Admin").Wait();
 
                 userManager.CreateAsync(user2, "#sometimeOne123").Wait();
-                
+
                 roleManager.CreateAsync(role2).Wait();
 
                 userManager.AddToRoleAsync(user2, "User").Wait();

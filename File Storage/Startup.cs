@@ -4,6 +4,7 @@ using FileStorageDAL;
 using FileStorageDAL.Entities;
 using FileStorageDAL.Repository;
 using FileStorageDAL.UnitOfWork;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,7 +15,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
-using System;
 
 namespace File_Storage
 {
@@ -34,7 +34,7 @@ namespace File_Storage
                 .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
             services.AddDbContext<FileStorageDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")),ServiceLifetime.Transient);
+                    Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
 
             services.AddControllers();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -58,11 +58,10 @@ namespace File_Storage
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "File_Storage v1"));
             }
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
             app.UseAuthentication();
             app.UseAuthorization();
 
