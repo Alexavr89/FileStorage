@@ -7,26 +7,24 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
-  <a [routerLink]="['/files']" class="btn">Welcome</a>
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi ml-2 bi-hdd-stack-fill" viewBox="0 0 16 16">
+    <path d="M2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/>
+  </svg>
+  <a [routerLink]="['/files']" class="btn">File Storage</a>
   <a class="btn" [routerLink]="['/administration']">Admin</a>
     <div class="spacer"></div>
   <a class="btn" (click)="openForm()">Login</a>
   <div class="form-popup" id="myForm">
-    <form action="" class="form-container">
+    <form (ngSubmit)="onSubmit()" class="form-container" [formGroup]="loginForm">
       <h1>Login</h1>
   
       <label for="email"><span>Email</span></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
-  
-      <label for="psw"><span>Password</span></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-  
-      <button type="submit" class="btn">Login</button>
+      <input type="text" placeholder="Enter Email" formControlName="email" id="email">
+      <span *ngIf="email?.invalid" class="text-danger">Email is incorrect</span>
+      <label for="password"><span>Password</span></label>
+      <input type="password" placeholder="Enter Password" formControlName="password" id="password">
+      <span *ngIf="password?.invalid" class="text-danger">Password is required</span>
+      <input type="submit" value="Login" class="btn btn-default" [disabled]="loginForm.invalid"/>
       <span>Can't login? </span><a [routerLink]="['/registration']" id="signup">Sign Up</a>
     </form>
   </div>
