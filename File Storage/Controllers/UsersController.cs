@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace File_Storage.Controllers
 {
     [Authorize(Roles = "Admin")]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {

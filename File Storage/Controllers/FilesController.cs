@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace File_Storage.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class FilesController : ControllerBase
     {
@@ -31,31 +31,31 @@ namespace File_Storage.Controllers
             throw new NotImplementedException();
         }
 
-        // GET api/<ValuesController>/5
+        // GET <ValuesController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // PUT api/<ValuesController>/5
+        // PUT <ValuesController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<ValuesController>/5
+        // DELETE <ValuesController>/5
         [HttpDelete("{id}")]
         public void DeleteFile(int id)
         {
 
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public Task<StorageFile> GetFileByName(int id)
-        {
-            return _unitOfWork.StorageFiles.GetPrivateFileByIdAsync(id);
-        }
+        //[Authorize(Roles = "Admin")]
+        //[HttpGet]
+        //public Task<StorageFile> GetFileByName(int id)
+        //{
+        //    return _unitOfWork.StorageFiles.GetPrivateFileByIdAsync(id);
+        //}
     }
 }

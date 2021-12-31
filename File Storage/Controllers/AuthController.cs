@@ -1,66 +1,57 @@
 ﻿using File_Storage.Models;
 using FileStorageBLL.Account;
 using FileStorageBLL.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 using WebApiDemo.Filters;
 using WebApiDemo.Helpers;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace File_Storage.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
+    [ModelStateActionFilter]
+    
     public class AuthController : ControllerBase
     {
-        [ApiController]
-        [Route("[controller]")]
-        [ModelStateActionFilter]
-        public class AccountController : Controller
+        private readonly IUserService _userService;
+        private readonly JwtSettings _jwtSettings;
+
+        public AuthController(IUserService userService, IOptionsSnapshot<JwtSettings> jwtSettings)
         {
-            private readonly IUserService _userService;
-            private readonly JwtSettings _jwtSettings;
+            _userService = userService;
+            _jwtSettings = jwtSettings.Value;
+        }
 
-            public AccountController(
-                IUserService userService,
-                IOptionsSnapshot<JwtSettings> jwtSettings)
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody]RegisterModel model)
+        {
+            await _userService.Register(new Register
             {
-                _userService = userService;
-                _jwtSettings = jwtSettings.Value;
-            }
+                Email = model.Email,
+                Password = model.Password,
+                Year = model.Year
+            });
 
-            [HttpPost("register")]
-            public async Task<IActionResult> Register(RegisterModel model)
+            return Created(string.Empty, string.Empty);
+        }
+
+        [HttpPost("logon")]
+        public async Task<IActionResult> Logon([FromBody]LogonModel model)
+        {
+            var user = await _userService.Logon(new Logon
             {
-                await _userService.Register(new Register
-                {
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Password = model.Password,
-                    Year = model.Year
-                });
+                Email = model.Email,
+                Password = model.Password
+            });
 
-                return Created(string.Empty, string.Empty);
-            }
+            if (user is null) return BadRequest();
 
-            [HttpPost("logon")]
-            public async Task<IActionResult> Logon(LogonModel model)
-            {
-                var user = await _userService.Logon(new Logon
-                {
-                    Email = model.Email,
-                    Password = model.Password
-                });
+            var roles = await _userService.GetRoles(user);
 
-                if (user is null) return BadRequest();
-
-                var roles = await _userService.GetRoles(user);
-
-                return Ok(JwtHelper.GenerateJwt(user, roles, _jwtSettings));
-            }
+            return Ok(JwtHelper.GenerateJwt(user, roles, _jwtSettings));
         }
     }
 }

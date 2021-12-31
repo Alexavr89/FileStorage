@@ -28,8 +28,6 @@ namespace FileStorageBLL.Services
             {
                 Email = user.Email,
                 UserName = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName
             }, user.Password);
 
             if (!result.Succeeded)
@@ -52,11 +50,11 @@ namespace FileStorageBLL.Services
             var roles = _roleManager.Roles.ToList().Where(r => assignUserToRoles.Roles.Contains(r.Name, StringComparer.OrdinalIgnoreCase))
                 .Select(r => r.NormalizedName).ToList();
 
-            var result = await _userManager.AddToRolesAsync(user, roles); // THROWS
+            var result = await _userManager.AddToRolesAsync(user, roles);
 
             if (!result.Succeeded)
             {
-                throw new System.Exception(string.Join(';', result.Errors.Select(x => x.Description)));
+                throw new Exception(string.Join(';', result.Errors.Select(x => x.Description)));
             }
         }
 
@@ -66,7 +64,7 @@ namespace FileStorageBLL.Services
 
             if (!result.Succeeded)
             {
-                throw new System.Exception($"Role could not be created: {roleName}.");
+                throw new Exception($"Role could not be created: {roleName}.");
             }
         }
 
