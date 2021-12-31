@@ -333,7 +333,7 @@
   
   /* Set a style for the submit/login button */
   .form-container .btn {
-    background-color: blue;
+    background-color: #1976d2;
     color: white;
     padding: 16px 20px;
     border: none;
@@ -368,5 +368,4 @@
     min-height: 100vh;
     height: auto;
     margin: 0;
-    overflow-y:hidden ;
   }
