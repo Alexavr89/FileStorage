@@ -13,15 +13,15 @@
     <div class="form-group">
         <label for="password"><span>Password</span>*</label>
         <div>
-            <input type="password" placeholder="Enter Password" formControlName="password">
-            <span *ngIf="password?.invalid" class="text-danger">Password is incorrect</span>
+            <input type="password" placeholder="Enter Password" formControlName="Password">
+            <span *ngIf="Password?.invalid" class="text-danger">Password is incorrect</span>
         </div>
     </div>
 
     <div class="form-group">
         <label for="ConfirmPassword"><span>Confirm Password</span>*</label>
         <div>
-            <input type="password" placeholder="Confirm Password" formControlName="confirmpassword">
+            <input type="password" placeholder="Confirm Password" formControlName="PasswordConfirm">
             <span class="text-danger" *ngIf="registerForm.errors?.['isNotEqual'] && (registerForm?.touched || registerForm?.dirty)">Password and confirm password must be the same</span>
         </div>
     </div>

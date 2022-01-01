@@ -1,7 +1,10 @@
-import { style } from '@angular/animations';
 import { Component } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';  
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-root',
@@ -9,12 +12,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { 
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private router: Router) { 
   }
   title = 'AngularUI';
   BaseUrl = 'https://localhost:44346/';
+  jwtHelper = new JwtHelperService();
+  decodedToken: any;
   loginForm = this.formBuilder.group({
-    email: ['',[Validators.required, Validators.email]],
+    email: ['',[Validators.required]],
     password: ['',Validators.required]
   });
   openForm(){
@@ -27,12 +32,27 @@ export class AppComponent{
     }
   }
   onSubmit(){
-    if (this.loginForm.valid){
-      this.httpClient.post(this.BaseUrl+'auth/logon', this.loginForm.value).subscribe(
-        (res)=> res,
-        (err)=> console.log(err)
-      );
-    }
+      return this.httpClient.post(this.BaseUrl+'auth/logon', this.loginForm.value)
+      .pipe(
+        map((response: any) => {
+          const user = response;
+          if (user) {
+            localStorage.setItem('token', user.token);
+            this.decodedToken = this.jwtHelper.decodeToken(user.token);
+            console.log(this.decodedToken);
+          }
+        })
+      ).subscribe(() => {
+        this.router.navigate(['/files']),
+        document.getElementById("myForm")!.style.display = ''}
+      )}
+  loggedIn() {
+    const token = localStorage.getItem('token')!;
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
   get email(){
     return this.loginForm.get('email');

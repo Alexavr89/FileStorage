@@ -369,3 +369,7 @@
     height: auto;
     margin: 0;
   }
+   
+  .dropdown-toggle, .dropdown-item{
+      cursor: pointer;
+  }
