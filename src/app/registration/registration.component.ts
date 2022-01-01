@@ -12,15 +12,15 @@ import {Router} from '@angular/router';
 export class RegistrationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private router:Router) { }
   passwordEqualityValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-    const password = control.get('password');
-    const confirmpassword = control.get('confirmpassword'); 
-    return password?.value === confirmpassword?.value ? null : { isNotEqual: true };
+    const Password = control.get('Password');
+    const PasswordConfirm = control.get('PasswordConfirm'); 
+    return Password?.value === PasswordConfirm?.value ? null : { isNotEqual: true };
   }
   BaseUrl = 'https://localhost:44346/';
   registerForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
-    confirmpassword:['', Validators.required],
+    email: ['', [Validators.required]],
+    Password: ['', [Validators.required]],
+    PasswordConfirm:['', Validators.required],
     year:'',
   }, { validator: this.passwordEqualityValidator });
 
@@ -29,6 +29,7 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(){
     if (this.registerForm.valid){
+      let a = this.registerForm.value;
       this.httpClient.post(this.BaseUrl+'auth/register', this.registerForm.value).subscribe(
         ()=> this.router.navigate(['/']),
         (err)=> console.log(err)
@@ -40,10 +41,10 @@ export class RegistrationComponent implements OnInit {
   get email(){
     return this.registerForm.get('email');
   }
-  get password(){
-    return this.registerForm.get('password');
+  get Password(){
+    return this.registerForm.get('Password');
   }
-  get confirmpassword(){
-    return this.registerForm.get('confirmpassword');
+  get PasswordConfirm(){
+    return this.registerForm.get('PasswordConfirm');
   }
 }

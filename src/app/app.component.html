@@ -13,7 +13,12 @@
   <a [routerLink]="['/files']" class="btn">File Storage</a>
   <a class="btn" [routerLink]="['/administration']">Admin</a>
     <div class="spacer"></div>
-  <a class="btn" (click)="openForm()">Login</a>
+    <div  *ngIf="loggedIn()" dropdown>
+
+        <a class="btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
+
+    </div>
+  <a class="btn" *ngIf="!loggedIn()" (click)="openForm()">Login</a>
   <div class="form-popup" id="myForm">
     <form (ngSubmit)="onSubmit()" class="form-container" [formGroup]="loginForm">
       <h1>Login</h1>
