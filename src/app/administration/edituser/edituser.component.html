@@ -1,0 +1,30 @@
+<div class="form-horizontal w-25 ml-auto mr-auto">
+    <form (ngSubmit)="updateUser()" [formGroup]="editForm">
+        <div class="form-group">
+            <label>Name</label>
+            <div>
+                <input type="text" formControlName="userName">
+            </div>
+            <span class="text-danger" *ngIf="userName?.invalid">User name is required</span>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <div>
+                <input type="text" formControlName="email">
+            </div>
+            <span class="text-danger" *ngIf="email?.invalid">Email is incorrect</span>
+        </div>
+        <div class="form-group">
+            <label>Role</label>
+            <div>
+                <select formControlName="role"> 
+                <option *ngFor="let role of roles" [selected]="role.name === user.role[0]">
+                {{role.name}}
+                </option>
+                </select>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info" [disabled]="editForm.invalid">Save</button>
+    </form>
+</div>

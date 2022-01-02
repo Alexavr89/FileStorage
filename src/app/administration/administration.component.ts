@@ -12,6 +12,7 @@ export class AdministrationComponent implements OnInit {
   BaseUrl = 'https://localhost:44346/';
   Users: any
   ngOnInit(): void {
+    this.getUsers();
   }
   getUsers(){
   this.httpClient.get(this.BaseUrl + "users")

@@ -44,7 +44,8 @@ export class AppComponent{
         })
       ).subscribe(() => {
         this.router.navigate(['/files']),
-        document.getElementById("myForm")!.style.display = ''}
+        document.getElementById("myForm")!.style.display = ''},
+        (err)=>document.getElementById("error")!.innerHTML="Wrong login credentials please try again"
       )}
   loggedIn() {
     const token = localStorage.getItem('token')!;

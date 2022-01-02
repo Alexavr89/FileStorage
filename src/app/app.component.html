@@ -22,15 +22,21 @@
   <div class="form-popup" id="myForm">
     <form (ngSubmit)="onSubmit()" class="form-container" [formGroup]="loginForm">
       <h1>Login</h1>
-  
+      <span id="error" class="text-danger"></span>
       <label for="email"><span>Email</span></label>
-      <input type="text" placeholder="Enter Email" formControlName="email" id="email">
-      <span *ngIf="email?.invalid" class="text-danger">Email is incorrect</span>
+      <div>
+        <input type="text" placeholder="Enter Email" formControlName="email" id="email">
+        <span *ngIf="email?.invalid" class="text-danger">Email is incorrect</span>
+      </div>
       <label for="password"><span>Password</span></label>
-      <input type="password" placeholder="Enter Password" formControlName="password" id="password">
-      <span *ngIf="password?.invalid" class="text-danger">Password is required</span>
-      <input type="submit" value="Login" class="btn btn-default" [disabled]="loginForm.invalid"/>
-      <span>Can't login? </span><a [routerLink]="['/registration']" id="signup">Sign Up</a>
+      <div>
+        <input type="password" placeholder="Enter Password" formControlName="password" id="password">
+        <span *ngIf="password?.invalid" class="text-danger">Password is required</span>
+      </div>
+      <div>
+        <input type="submit" value="Login" class="btn btn-default" [disabled]="loginForm.invalid"/>
+        <span>Can't login? </span><a [routerLink]="['/registration']" id="signup">Sign Up</a>
+      </div>
     </form>
   </div>
 </div>
