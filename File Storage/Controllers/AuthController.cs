@@ -1,7 +1,6 @@
 ﻿using File_Storage.Models;
 using FileStorageBLL.Account;
 using FileStorageBLL.Interfaces;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
@@ -13,7 +12,7 @@ namespace File_Storage.Controllers
     [Route("[controller]")]
     [ApiController]
     [ModelStateActionFilter]
-    
+
     public class AuthController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -26,7 +25,7 @@ namespace File_Storage.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody]RegisterModel model)
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             await _userService.Register(new Register
             {
@@ -34,12 +33,11 @@ namespace File_Storage.Controllers
                 Password = model.Password,
                 Year = model.Year
             });
-
             return Created(string.Empty, string.Empty);
         }
 
         [HttpPost("logon")]
-        public async Task<IActionResult> Logon([FromBody]LogonModel model)
+        public async Task<IActionResult> Logon([FromBody] LogonModel model)
         {
             var user = await _userService.Logon(new Logon
             {
@@ -51,7 +49,11 @@ namespace File_Storage.Controllers
 
             var roles = await _userService.GetRoles(user);
 
-            return Ok(JwtHelper.GenerateJwt(user, roles, _jwtSettings));
+            return Ok(new
+            {
+                token = JwtHelper.GenerateJwt(user, roles, _jwtSettings),
+                user
+            });
         }
     }
 }

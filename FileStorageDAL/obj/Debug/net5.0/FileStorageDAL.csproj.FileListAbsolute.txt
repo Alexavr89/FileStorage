@@ -4,6 +4,7 @@ C:\Users\Alexander\source\repos\file-storage\FileStorageDAL\bin\Debug\net5.0\Fil
 C:\Users\Alexander\source\repos\file-storage\FileStorageDAL\bin\Debug\net5.0\FileStorageDAL.dll
 C:\Users\Alexander\source\repos\file-storage\FileStorageDAL\bin\Debug\net5.0\ref\FileStorageDAL.dll
 C:\Users\Alexander\source\repos\file-storage\FileStorageDAL\bin\Debug\net5.0\FileStorageDAL.pdb
+C:\Users\Alexander\source\repos\file-storage\FileStorageDAL\obj\Debug\net5.0\FileStorageDAL.csproj.AssemblyReference.cache
 C:\Users\Alexander\source\repos\file-storage\FileStorageDAL\obj\Debug\net5.0\FileStorageDAL.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Alexander\source\repos\file-storage\FileStorageDAL\obj\Debug\net5.0\FileStorageDAL.AssemblyInfoInputs.cache
 C:\Users\Alexander\source\repos\file-storage\FileStorageDAL\obj\Debug\net5.0\FileStorageDAL.AssemblyInfo.cs

@@ -1,15 +1,16 @@
 ﻿using FileStorageDAL.Entities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace File_Storage.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [Route("[controller]")]
     [ApiController]
     public class RolesController : ControllerBase
@@ -52,10 +53,10 @@ namespace File_Storage.Controllers
         }
 
         [HttpGet]
-        public IActionResult ListRoles()
+        public IEnumerable<IdentityRole> ListRoles()
         {
-            var roles = _roleManager.Roles;
-            return (IActionResult)roles;
+            var roles = _roleManager.Roles.ToList();
+            return roles;
         }
 
         [HttpPut]
