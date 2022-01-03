@@ -1,10 +1,12 @@
-﻿using FileStorageDAL.Entities;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace FileStorageDAL
+namespace FileStorageDAL.Entities
 {
+    /// <summary>
+    /// StorageFile entity
+    /// </summary>
     public class StorageFile
     {
         [Key]
@@ -26,3 +28,4 @@ namespace FileStorageDAL
         public bool IsPublic { get; set; }
     }
 }
+
