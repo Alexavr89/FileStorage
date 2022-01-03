@@ -90,7 +90,7 @@ namespace FileStorageDAL.Migrations
             modelBuilder.Entity("FileStorageDAL.StorageFile", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int");
 
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");

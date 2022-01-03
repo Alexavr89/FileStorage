@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using FileStorageDAL.Entities;
+using System.Linq;
 using System.Linq.Dynamic.Core;
 
 namespace FileStorageDAL.Repository.Extensions

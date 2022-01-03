@@ -20,7 +20,8 @@ namespace FileStorageDAL
                     Created = DateTime.Now,
                     Name = "First file",
                     Extension = "txt",
-                    Id = 1
+                    Id = 1,
+                    RelativePath = "../FileStorageDAL/Files/1.txt"
                 };
                 var file2 = new StorageFile
                 {
@@ -28,7 +29,8 @@ namespace FileStorageDAL
                     Created = DateTime.Now,
                     Name = "Second file",
                     Extension = "pdf",
-                    Id = 2
+                    Id = 2,
+                    RelativePath = "../FileStorageDAL/Files/2.txt"
                 };
                 var files = new List<StorageFile>
                 {

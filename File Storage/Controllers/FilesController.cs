@@ -1,7 +1,6 @@
 ﻿using FileStorageDAL;
 using FileStorageDAL.Entities;
 using FileStorageDAL.UnitOfWork;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -33,7 +31,7 @@ namespace File_Storage.Controllers
         /// <param name="context"></param>
         /// <param name="appEnvironment"></param>
         /// <param name="userManager"></param>
-        public FilesController(IUnitOfWork unitOfWork, FileStorageDbContext context, 
+        public FilesController(IUnitOfWork unitOfWork, FileStorageDbContext context,
             IWebHostEnvironment appEnvironment, UserManager<ApplicationUser> userManager)
         {
             _unitOfWork = unitOfWork;
@@ -47,18 +45,14 @@ namespace File_Storage.Controllers
         /// </summary>
         /// <param name="fileId">Id of expected file to download</param>
         /// <returns>Downloading confirmation message</returns>
-        [Authorize(Roles = "User")]
-        [HttpGet]
+        [HttpGet("download/{fileId}")]
         public IActionResult DownloadFile(int fileId)
         {
             try
             {
-                var file = _context.StorageFiles.FirstOrDefault(x => x.Id == fileId);
-                using (var client = new WebClient())
-                {
-                    client.DownloadFile($"{file.RelativePath}", $"{file.Name}");
-                }
-                return Ok("File is downloading, please wait...");
+                var file = _context.StorageFiles.Where(x => x.Id == fileId).First();
+                var result = File(System.IO.File.ReadAllBytes(file.RelativePath), $"{file.Extension}", $"{file.Name}");
+                return result;
             }
             catch (Exception e)
             {
@@ -71,14 +65,14 @@ namespace File_Storage.Controllers
         /// </summary>
         /// <param name="uploadedFile">File to be uploaded to the server</param>
         /// <returns>Uploding confirmation message</returns>
-        [HttpPost]
+        [HttpPost("upload")]
         public async Task<IActionResult> AddFile(IFormFile uploadedFile)
         {
             try
             {
                 if (uploadedFile != null)
                 {
-                    string path = "FileStorageDAL/Files/" + uploadedFile.FileName;
+                    string path = "../FileStorageDAL/Files/" + uploadedFile.FileName;
                     using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                     {
                         await uploadedFile.CopyToAsync(fileStream);
@@ -89,10 +83,13 @@ namespace File_Storage.Controllers
                         RelativePath = path,
                         Created = DateTime.Now,
                         Size = uploadedFile.Length,
-                        Extension = uploadedFile.ContentType
+                        Extension = uploadedFile.ContentType,
+                        //ApplicationUser = _userManager.Users.FirstOrDefault(),
+                        IsPublic = true,
+                        Id = _context.StorageFiles.Count() + 1
                     };
-                    _context.StorageFiles.Add(file);
-                    await _unitOfWork.SaveAsync();
+                    await _context.StorageFiles.AddAsync(file);
+                    await _context.SaveChangesAsync();
                 }
                 return Ok("File Uploaded");
             }
@@ -126,10 +123,10 @@ namespace File_Storage.Controllers
         /// Gets all files from the database
         /// </summary>
         /// <returns>Files from the database</returns>
-        [HttpGet("files")]
+        [HttpGet]
         public IEnumerable<StorageFile> GetAllFiles()
         {
-            var files =_context.StorageFiles;
+            var files = _context.StorageFiles.ToList();
             return files;
         }
 
@@ -139,15 +136,16 @@ namespace File_Storage.Controllers
         /// <param name="id">id of file that expected to be deleted</param>
         /// <returns>Empty result as a confirmation of successful file deletion</returns>
         [HttpDelete("{id}")]
-        public IActionResult DeleteFile(int id)
+        public async Task<IActionResult> DeleteFile(int id)
         {
             try
             {
-                var file = _context.StorageFiles.FindAsync(id).Result;
+                var file = await _context.StorageFiles.FindAsync(id);
                 if (file == null)
                     return BadRequest("File not found");
+                System.IO.File.Delete(file.RelativePath);
                 _context.StorageFiles.Remove(file);
-                _unitOfWork.SaveAsync();
+                await _context.SaveChangesAsync();
                 return NoContent();
             }
             catch (Exception e)
