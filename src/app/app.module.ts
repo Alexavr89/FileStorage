@@ -7,6 +7,7 @@ import { AdministrationComponent } from './administration/administration.compone
 import { FilesComponent } from './files/files.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EdituserComponent } from './administration/edituser/edituser.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationComponent,
     AdministrationComponent,
     FilesComponent,
+    EdituserComponent,
   ],
   imports: [
     BrowserModule,
