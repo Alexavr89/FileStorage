@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 
@@ -77,12 +77,22 @@ export class EdituserComponent implements OnInit {
       (err)=>console.log(err)
     )
   }
-   shareFile(file:any){
-     this.httpClient.get(this.BaseUrl + "files/download/" + file.id).subscribe(
-       (res)=> console.log(res),
-       (err)=> console.log(err)
-     )
-   }
+  shareFile(file:any){
+    this.httpClient.get(this.BaseUrl + "files/download/" + file.id, {
+      observe: 'response',
+      responseType: 'blob'
+  }).subscribe(
+      (data)=> {
+        switch (data.type) {
+          case HttpEventType.Response:
+            const downloadedFile = new Blob([data.body!], { type: data.body!.type });
+            document.getElementById(file.name)!.innerHTML = URL.createObjectURL(downloadedFile);
+            break;
+        }
+      },
+      (err)=>console.log(err)
+    )
+  }
    get email(){
     return this.editForm.get('email');
   }

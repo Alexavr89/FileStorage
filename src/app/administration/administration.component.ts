@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class AdministrationComponent implements OnInit {
   constructor(private httpClient:HttpClient, private router:Router) { }
   BaseUrl = 'https://localhost:44346/';
-  Users: any
+  Users: any;
+  files: any;
   ngOnInit(): void {
     this.getUsers();
   }
@@ -30,4 +31,33 @@ export class AdministrationComponent implements OnInit {
       (err)=> console.log(err)
     )
   }
+  deleteFile(file:any){
+    this.httpClient.delete(this.BaseUrl + "files/" + file.id).subscribe(
+      ()=>this.getFiles(null),
+      (err)=>console.log(err)
+    )
+  }
+  shareFile(file:any){
+    this.httpClient.get(this.BaseUrl + "files/download/" + file.id, {
+      observe: 'response',
+      responseType: 'blob'
+  }).subscribe(
+      (data)=> {
+        switch (data.type) {
+          case HttpEventType.Response:
+            const downloadedFile = new Blob([data.body!], { type: data.body!.type });
+            document.getElementById(file.name)!.innerHTML = URL.createObjectURL(downloadedFile);
+            break;
+        }
+      },
+      (err)=>console.log(err)
+    )
+  }
+  getFiles(query:any){
+    this.httpClient.get(this.BaseUrl + "files/search/" + query).subscribe(
+      (res)=>this.files=res,
+      (err)=>console.log(err)
+    )
+  }
+  
 }
