@@ -15,7 +15,7 @@ namespace FileStorageDAL.Entities
         [MaxLength(300)]
         public string Name { get; set; }
         public long Size { get; set; }
-        [MaxLength(20)]
+        [MaxLength(60)]
         public string Extension { get; set; }
         public DateTime Created { get; set; }
         [Required]

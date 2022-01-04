@@ -50,7 +50,9 @@ namespace File_Storage.Controllers
         {
             try
             {
-                var file = _context.StorageFiles.Where(x => x.Id == fileId).First();
+                var file = _context.StorageFiles.Where(x => x.Id == fileId).FirstOrDefault();
+                if (file == null)
+                    return NotFound("There is no file in the system with id :" + $"{fileId}");
                 var result = File(System.IO.File.ReadAllBytes(file.RelativePath), $"{file.Extension}", $"{file.Name}");
                 return result;
             }
@@ -123,11 +125,15 @@ namespace File_Storage.Controllers
         /// Gets all files from the database
         /// </summary>
         /// <returns>Files from the database</returns>
-        [HttpGet]
-        public IEnumerable<StorageFile> GetAllFiles()
+        [HttpGet("search/{query}")]
+        public IEnumerable<StorageFile> GetAllFiles(string query)
         {
             var files = _context.StorageFiles.ToList();
-            return files;
+            if (query == null)
+            {
+                return files;
+            }
+            return files.Where(x => x.Name.ToLower().Contains(query.ToLower()));
         }
 
         /// <summary>
