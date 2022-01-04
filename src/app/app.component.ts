@@ -18,6 +18,7 @@ export class AppComponent{
   BaseUrl = 'https://localhost:44346/';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
+  user : any;
   loginForm = this.formBuilder.group({
     email: ['',[Validators.required]],
     password: ['',Validators.required]
@@ -35,10 +36,10 @@ export class AppComponent{
       return this.httpClient.post(this.BaseUrl+'auth/logon', this.loginForm.value)
       .pipe(
         map((response: any) => {
-          const user = response;
-          if (user) {
-            localStorage.setItem('token', user.token);
-            this.decodedToken = this.jwtHelper.decodeToken(user.token);
+          this.user = response;
+          if (this.user) {
+            localStorage.setItem('token', this.user.token);
+            this.decodedToken = this.jwtHelper.decodeToken(this.user.token);
             console.log(this.decodedToken);
           }
         })

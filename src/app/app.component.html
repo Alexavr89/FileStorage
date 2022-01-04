@@ -11,12 +11,12 @@
     <path d="M2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/>
   </svg>
   <a [routerLink]="['/files']" class="btn">File Storage</a>
-  <a class="btn" [routerLink]="['/administration']">Admin</a>
+  <div  *ngIf="loggedIn()">
+    <a class="btn" [routerLink]="['/administration']" *ngIf="user.roles[0] === 'Admin'">Admin</a>
+  </div>
     <div class="spacer"></div>
-    <div  *ngIf="loggedIn()" dropdown>
-
-        <a class="btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
-
+    <div  *ngIf="loggedIn()">
+      <a class="btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
     </div>
   <a class="btn" *ngIf="!loggedIn()" (click)="openForm()">Login</a>
   <div class="form-popup" id="myForm">

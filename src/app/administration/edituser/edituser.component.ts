@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 
@@ -16,6 +16,7 @@ export class EdituserComponent implements OnInit {
   userId : any;
   roles: any;
   user: any;
+  files: any;
   editForm=this.formBuilder.group({
     userName: ['', Validators.required],
     email: ['', Validators.email],
@@ -24,6 +25,7 @@ export class EdituserComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.getRoles();
+    this.getFiles();
   }
   getUser(){
     this.route.queryParams
@@ -45,6 +47,41 @@ export class EdituserComponent implements OnInit {
      this.httpClient.put(this.BaseUrl + "users/" + this.userId + "/" + this.editForm.controls['role'].value, this.editForm.value).subscribe(
       (res)=> this.router.navigate(['/administration']),
       (err)=> console.log(err));
+   }
+   getFiles(){
+     this.httpClient.get(this.BaseUrl + "files/" + this.userId).subscribe(
+       (res)=>this.files = res,
+       (err)=>console.log(err)
+     )
+   }
+   deleteFile(file:any){
+     this.httpClient.delete(this.BaseUrl + "files/" + file.id).subscribe(
+       (res)=>this.getFiles(),
+       (err)=>console.log(err)
+     )
+   }
+   public uploadFile = (files:any) => {
+    if (files.length === 0) {
+      return;
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'accept': 'application/json'
+    })
+    }
+    let uploadedFile = <File>files[0];
+    const formData = new FormData();
+    formData.append('uploadedFile', uploadedFile, uploadedFile.name);
+    this.httpClient.post(this.BaseUrl + "files/upload", formData, httpOptions).subscribe(
+      ()=>this.getFiles(),
+      (err)=>console.log(err)
+    )
+  }
+   shareFile(file:any){
+     this.httpClient.get(this.BaseUrl + "files/download/" + file.id).subscribe(
+       (res)=> console.log(res),
+       (err)=> console.log(err)
+     )
    }
    get email(){
     return this.editForm.get('email');
