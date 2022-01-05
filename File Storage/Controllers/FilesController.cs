@@ -1,14 +1,12 @@
-﻿using FileStorageDAL;
+﻿using FileStorageBLL.Interfaces;
 using FileStorageDAL.Entities;
 using FileStorageDAL.UnitOfWork;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,25 +17,23 @@ namespace File_Storage.Controllers
     [ApiController]
     public class FilesController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly FileStorageDbContext _context;
         private readonly IWebHostEnvironment _appEnvironment;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IFileService _fileService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FilesController"/>.
         /// </summary>
-        /// <param name="unitOfWork"></param>
-        /// <param name="context"></param>
         /// <param name="appEnvironment"></param>
-        /// <param name="userManager"></param>
-        public FilesController(IUnitOfWork unitOfWork, FileStorageDbContext context,
-            IWebHostEnvironment appEnvironment, UserManager<ApplicationUser> userManager)
+        /// <param name="unitOfWork"></param>
+        /// <param name="fileService"></param>
+        public FilesController(IWebHostEnvironment appEnvironment,
+            IUnitOfWork unitOfWork,
+            IFileService fileService)
         {
-            _unitOfWork = unitOfWork;
-            _context = context;
             _appEnvironment = appEnvironment;
-            _userManager = userManager;
+            _unitOfWork = unitOfWork;
+            _fileService = fileService;
         }
 
         /// <summary>
@@ -46,11 +42,11 @@ namespace File_Storage.Controllers
         /// <param name="fileId">Id of expected file to download</param>
         /// <returns>Downloading confirmation message</returns>
         [HttpGet("download/{fileId}")]
-        public IActionResult DownloadFile(int fileId)
+        public IActionResult ShareFile(int fileId)
         {
             try
             {
-                var file = _context.StorageFiles.Where(x => x.Id == fileId).FirstOrDefault();
+                var file = _unitOfWork.StorageFiles.GetByIdAsync(fileId).Result;
                 if (file == null)
                     return NotFound("There is no file in the system with id :" + $"{fileId}");
                 var result = File(System.IO.File.ReadAllBytes(file.RelativePath), $"{file.Extension}", $"{file.Name}");
@@ -68,7 +64,7 @@ namespace File_Storage.Controllers
         /// <param name="uploadedFile">File to be uploaded to the server</param>
         /// <returns>Uploding confirmation message</returns>
         [HttpPost("upload")]
-        public async Task<IActionResult> AddFile(IFormFile uploadedFile)
+        public async Task<IActionResult> UploadFile(IFormFile uploadedFile)
         {
             try
             {
@@ -79,19 +75,7 @@ namespace File_Storage.Controllers
                     {
                         await uploadedFile.CopyToAsync(fileStream);
                     }
-                    StorageFile file = new StorageFile
-                    {
-                        Name = uploadedFile.FileName,
-                        RelativePath = path,
-                        Created = DateTime.Now,
-                        Size = uploadedFile.Length,
-                        Extension = uploadedFile.ContentType,
-                        //ApplicationUser = _userManager.Users.FirstOrDefault(),
-                        IsPublic = true,
-                        Id = _context.StorageFiles.Count() + 1
-                    };
-                    await _context.StorageFiles.AddAsync(file);
-                    await _context.SaveChangesAsync();
+                    _fileService.AddFile(uploadedFile);
                 }
                 return Ok("File Uploaded");
             }
@@ -111,9 +95,7 @@ namespace File_Storage.Controllers
         {
             try
             {
-                var user = _userManager.FindByIdAsync(userId).Result;
-                var files = _context.StorageFiles.Where(file => file.ApplicationUser == user);
-                return files;
+                return _fileService.GetFilesByUser(userId);
             }
             catch (Exception e)
             {
@@ -128,12 +110,7 @@ namespace File_Storage.Controllers
         [HttpGet("search/{query}")]
         public IEnumerable<StorageFile> GetAllFiles(string query)
         {
-            var files = _context.StorageFiles.ToList();
-            if (query == null)
-            {
-                return files;
-            }
-            return files.Where(x => x.Name.ToLower().Contains(query.ToLower()));
+            return _fileService.GetAllFiles(query);
         }
 
         /// <summary>
@@ -146,12 +123,11 @@ namespace File_Storage.Controllers
         {
             try
             {
-                var file = await _context.StorageFiles.FindAsync(id);
+                var file = await _unitOfWork.StorageFiles.GetByIdAsync(id);
                 if (file == null)
                     return BadRequest("File not found");
                 System.IO.File.Delete(file.RelativePath);
-                _context.StorageFiles.Remove(file);
-                await _context.SaveChangesAsync();
+                _fileService.DeleteFile(id);
                 return NoContent();
             }
             catch (Exception e)

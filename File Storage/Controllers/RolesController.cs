@@ -1,6 +1,4 @@
-﻿using FileStorageDAL.Entities;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Data;
@@ -28,14 +26,14 @@ namespace File_Storage.Controllers
         /// <summary>
         /// Retrieves all roles from the database
         /// </summary>
-        /// <returns></returns>
+        /// <returns>All roles from the database</returns>
         [HttpGet]
         public IEnumerable<IdentityRole> ListRoles()
         {
             var roles = _roleManager.Roles.ToList();
             return roles;
         }
-        
+
         /// <summary>
         /// Deletes speecified role from the Database
         /// </summary>

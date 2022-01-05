@@ -1,11 +1,9 @@
 ﻿using FileStorageDAL.Entities;
-using FileStorageDAL.Models;
-using FileStorageDAL.Repository.Extensions;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace FileStorageDAL.Repository
 {
@@ -16,105 +14,53 @@ namespace FileStorageDAL.Repository
         {
             _context = context;
         }
-        public async Task<(IEnumerable<StorageFile> files, int count)> GetAllFilesAsync(StorageFilesRequest filesRequest)
+
+        public void DeleteFile(int id)
         {
-            var files = _context.StorageFiles
-               .Include(file => file.ApplicationUser)
-               .SearchBy(filesRequest.SearchTerm);
-
-            var totalCount = await files.CountAsync();
-
-            var resultfiles = await files
-                .Sort(filesRequest.OrderBy)
-                .PageStorageFiles(filesRequest.PageNumber, filesRequest.PageSize)
-                .ToListAsync();
-
-            return (resultfiles, totalCount);
+            var file = _context.StorageFiles.FirstOrDefault(x => x.Id == id);
+            if (file != null)
+            {
+                _context.StorageFiles.Remove(file);
+                File.Delete(file.RelativePath);
+            }
+            _context.SaveChanges();
         }
 
-        public async Task<StorageFile> GetFileByFileIdAsync(int fileId)
+        public IEnumerable<StorageFile> GetAllFiles(string query)
         {
-            return await _context.StorageFiles
-                 .FirstOrDefaultAsync(
-                     file => file.Id == fileId);
+            var files = _context.StorageFiles;
+            if (query == null)
+            {
+                return files;
+            }
+            return files.Where(x => x.Name.ToLower().Contains(query.ToLower()));
         }
 
-        public async Task<StorageFile> GetPrivateFileByIdAsync(int fileId)
+        public IEnumerable<StorageFile> GetFilesByUser(string userId)
         {
-            return await _context.StorageFiles
-                .FirstOrDefaultAsync(
-                    file => file.Id == fileId
-                            && !file.IsRecycled);
+            var files = _context.StorageFiles.Where(x => x.ApplicationUser.Id == userId);
+            return files;
         }
 
-        public async Task<(IEnumerable<StorageFile> files, int count)> GetPrivateFilesByUserAsync(ApplicationUser user, StorageFilesRequest filesRequest)
+        public void AddFile(IFormFile uploadedFile)
         {
-            var files = _context.StorageFiles
-                .Where(file => file.ApplicationUser == user
-                               && !file.IsRecycled)
-                .FilterStorageFilesBySize(filesRequest.MinSize, filesRequest.MaxSize)
-                .SearchBy(filesRequest.SearchTerm);
-
-            var totalCount = await files.CountAsync();
-
-            var resultCollection = await files
-                .Sort(filesRequest.OrderBy)
-                .PageStorageFiles(filesRequest.PageNumber, filesRequest.PageSize)
-                .ToListAsync();
-
-            return (resultCollection, totalCount);
-        }
-
-
-        public async Task<StorageFile> GetPublicFileByIdAsync(int fileId)
-        {
-            return await _context.StorageFiles
-            .FirstOrDefaultAsync(
-            file => file.Id == fileId
-                && !file.IsRecycled && file.IsPublic);
-        }
-
-        public async Task<(IEnumerable<StorageFile> files, int count)> GetPublicFilesAsync(StorageFilesRequest filesRequest)
-        {
-            var files = _context.StorageFiles
-                .Include(file => file.ApplicationUser)
-                .Where(file => file.IsPublic && !file.IsRecycled)
-                .SearchBy(filesRequest.SearchTerm);
-
-            var totalCount = await files.CountAsync();
-
-            var resultfiles = await files
-                .Sort(filesRequest.OrderBy)
-                .PageStorageFiles(filesRequest.PageNumber, filesRequest.PageSize)
-                .ToListAsync();
-
-            return (resultfiles, totalCount);
-        }
-
-
-        public async Task<StorageFile> GetRecycledFileByIdAsync(int fileId)
-        {
-            return await _context.StorageFiles
-            .FirstOrDefaultAsync(
-            file => file.Id == fileId
-                && file.IsRecycled);
-        }
-
-        public async Task<(IEnumerable<StorageFile> files, int count)> GetRecycledFilesByUserAsync(ApplicationUser user, StorageFilesRequest filesRequest)
-        {
-            var files = _context.StorageFiles
-            .Where(file => file.ApplicationUser == user
-                   && file.IsRecycled)
-            .SearchBy(filesRequest.SearchTerm);
-
-            var totalCount = await files.CountAsync();
-
-            var resultfiles = await files
-                .Sort(filesRequest.OrderBy)
-                .PageStorageFiles(filesRequest.PageNumber, filesRequest.PageSize)
-                .ToListAsync();
-
-            return (resultfiles, totalCount);
+            if (uploadedFile != null)
+            {
+                string path = "../FileStorageDAL/Files/" + uploadedFile.FileName;
+                StorageFile file = new()
+                {
+                    Name = uploadedFile.FileName,
+                    RelativePath = path,
+                    Created = DateTime.Now,
+                    Size = uploadedFile.Length,
+                    Extension = uploadedFile.ContentType,
+                    //ApplicationUser = _userManager.Users.FirstOrDefault(),
+                    IsPublic = true,
+                    Id = _context.StorageFiles.Count() + 1
+                };
+                _context.StorageFiles.AddAsync(file);
+                _context.SaveChangesAsync().Wait();
+            }
         }
     }
 }

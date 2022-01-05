@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
 namespace FileStorageDAL.Repository
 {
-    public interface IRepositoryBase<in TEntity>
+    public interface IRepositoryBase<TEntity> where TEntity : class
     {
+        IQueryable<TEntity> FindAll();
+        Task<TEntity> GetByIdAsync(int id);
         Task AddAsync(TEntity entity);
-        Task AddRangeAsync(IEnumerable<TEntity> entities);
-        void Remove(TEntity entity);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
     }
 }

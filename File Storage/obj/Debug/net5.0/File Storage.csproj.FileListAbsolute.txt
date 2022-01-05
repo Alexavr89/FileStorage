@@ -175,3 +175,5 @@ C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File 
 C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\ref\File Storage.dll
 C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.pdb
 C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.genruntimeconfig.cache
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
