@@ -41,6 +41,7 @@ export class AppComponent{
             localStorage.setItem('token', this.user.token);
             localStorage.setItem('user', this.user.user.userName);
             localStorage.setItem('userId', this.user.user.id);
+            localStorage.setItem('userRole', this.user.roles[0]);
             this.decodedToken = this.jwtHelper.decodeToken(this.user.token);
           }
         })
@@ -57,6 +58,7 @@ export class AppComponent{
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
     this.router.navigate(['/']);
   }
   get email(){
