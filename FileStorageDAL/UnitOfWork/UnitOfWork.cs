@@ -1,4 +1,6 @@
-﻿using FileStorageDAL.Repository;
+﻿using FileStorageDAL.Entities;
+using FileStorageDAL.Repository;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading.Tasks;
 
@@ -8,7 +10,6 @@ namespace FileStorageDAL.UnitOfWork
     {
         private FileStorageDbContext _context;
         private IStorageFileRepository _storageFileRepository;
-
         public UnitOfWork(FileStorageDbContext context)
         {
             _context = context;

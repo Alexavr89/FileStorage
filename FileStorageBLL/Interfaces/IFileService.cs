@@ -9,6 +9,6 @@ namespace FileStorageBLL.Interfaces
         IEnumerable<StorageFile> GetAllFiles(string query);
         IEnumerable<StorageFile> GetFilesByUser(string userId);
         void DeleteFile(int id);
-        void AddFile(IFormFile uploadedFile);
+        void AddFile(IFormFile uploadedFile, string userName);
     }
 }

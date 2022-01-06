@@ -8,7 +8,7 @@ namespace FileStorageDAL.Repository
     {
         IEnumerable<StorageFile> GetAllFiles(string query);
         IEnumerable<StorageFile> GetFilesByUser(string userId);
-        void AddFile(IFormFile uploadedFile);
+        void AddFile(IFormFile uploadedFile, string userName);
         void DeleteFile(int id);
     }
 }

@@ -14,9 +14,9 @@ namespace FileStorageBLL.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void AddFile(IFormFile uploadedFile)
+        public void AddFile(IFormFile uploadedFile, string userName)
         {
-            _unitOfWork.StorageFiles.AddFile(uploadedFile);
+            _unitOfWork.StorageFiles.AddFile(uploadedFile, userName);
         }
 
         public void DeleteFile(int id)

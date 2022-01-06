@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-File_Storage-C9C27BDD-997A-4FC5-B5C9-5F067A9E15F3")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("File Storage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]

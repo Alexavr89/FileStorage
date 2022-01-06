@@ -63,8 +63,8 @@ namespace File_Storage.Controllers
         /// </summary>
         /// <param name="uploadedFile">File to be uploaded to the server</param>
         /// <returns>Uploding confirmation message</returns>
-        [HttpPost("upload")]
-        public async Task<IActionResult> UploadFile(IFormFile uploadedFile)
+        [HttpPost("upload/{userName}")]
+        public async Task<IActionResult> UploadFile(IFormFile uploadedFile, string userName)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace File_Storage.Controllers
                     {
                         await uploadedFile.CopyToAsync(fileStream);
                     }
-                    _fileService.AddFile(uploadedFile);
+                    _fileService.AddFile(uploadedFile, userName);
                 }
                 return Ok("File Uploaded");
             }
@@ -107,7 +107,7 @@ namespace File_Storage.Controllers
         /// Gets all files from the database
         /// </summary>
         /// <returns>Files from the database</returns>
-        [HttpGet("search/{query}")]
+        [HttpGet("search/{query?}")]
         public IEnumerable<StorageFile> GetAllFiles(string query)
         {
             return _fileService.GetAllFiles(query);

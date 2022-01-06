@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 
@@ -39,14 +40,12 @@ namespace FileStorageDAL.Repository
 
         public IEnumerable<StorageFile> GetFilesByUser(string userId)
         {
-            var user = _context.Users.Where(x=>x.Id == userId).FirstOrDefault();
-            if (user != null)
-                return _context.StorageFiles.Where(x => x.ApplicationUser== user);
-            return _context.StorageFiles;
+            return _context.StorageFiles.Where(x => x.ApplicationUser.Id == userId);
         }
 
-        public void AddFile(IFormFile uploadedFile)
+        public void AddFile(IFormFile uploadedFile, string userName)
         {
+            var user = _context.Users.Where(x => x.UserName == userName).FirstOrDefault();
             if (uploadedFile != null)
             {
                 string path = "../FileStorageDAL/Files/" + uploadedFile.FileName;
@@ -57,7 +56,7 @@ namespace FileStorageDAL.Repository
                     Created = DateTime.Now,
                     Size = uploadedFile.Length,
                     Extension = uploadedFile.ContentType,
-                    //ApplicationUser = _userManager.Users.FirstOrDefault(),
+                    ApplicationUser = user,
                     IsPublic = true,
                     Id = _context.StorageFiles.Count() + 1
                 };
