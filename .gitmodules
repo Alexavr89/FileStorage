@@ -1,0 +1,3 @@
+[submodule "UI"]
+	path = UI
+	url = https://gitlab.com/aavramenko017/filestorageui.git
