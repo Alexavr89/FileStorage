@@ -12,7 +12,7 @@
   </svg>
   <a [routerLink]="['/files']" class="btn">File Storage</a>
   <div  *ngIf="loggedIn()">
-    <a class="btn" [routerLink]="['/administration']" *ngIf="user.roles[0] === 'Admin'">Admin</a>
+    <a class="btn" [routerLink]="user.roles[0] === 'Admin' ? ['/administration'] : ['/files']" *ngIf="user.roles[0] === 'Admin'">Admin</a>
   </div>
     <div class="spacer"></div>
     <div  *ngIf="loggedIn()">

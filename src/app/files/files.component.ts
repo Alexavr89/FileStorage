@@ -10,16 +10,18 @@ import { FormBuilder} from '@angular/forms';
 export class FilesComponent implements OnInit {
   constructor(private httpClient: HttpClient, private formBuilder: FormBuilder) { }
   files:any;
-  userId:any;
+  user:any;
+  userId: any;
   BaseUrl = 'https://localhost:44346/';
 
   ngOnInit(): void {
     this.getFiles();
   }
   getFiles(){
+    this.userId = localStorage.getItem('userId');
     this.httpClient.get(this.BaseUrl + "files/" + this.userId).subscribe(
       (res)=>this.files=res,
-      (err)=>console.log(err)
+      (err)=>console.log(err) 
     )
   }
   deleteFile(file:any){
@@ -55,8 +57,9 @@ export class FilesComponent implements OnInit {
     }
     let uploadedFile = <File>files[0];
     const formData = new FormData();
+    this.user = localStorage.getItem('user');
     formData.append('uploadedFile', uploadedFile, uploadedFile.name);
-    this.httpClient.post(this.BaseUrl + "files/upload", formData, httpOptions).subscribe(
+    this.httpClient.post(this.BaseUrl + "files/upload/" + this.user, formData, httpOptions).subscribe(
       ()=>this.getFiles(),
       (err)=>console.log(err)
     )
