@@ -1,6 +1,7 @@
 ﻿using FileStorageDAL.Entities;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FileStorageBLL.Interfaces
 {
@@ -10,5 +11,9 @@ namespace FileStorageBLL.Interfaces
         IEnumerable<StorageFile> GetFilesByUser(string userId);
         void DeleteFile(int id);
         void AddFile(IFormFile uploadedFile, string userName);
+        IEnumerable<StorageFile> GetPrivateFilesByUser(string userId);
+        IEnumerable<StorageFile> GetPublicFilesByUser(string userId);
+        Task SetFilePublic(int fileId);
+        Task SetFilePrivate(int fileId);
     }
 }

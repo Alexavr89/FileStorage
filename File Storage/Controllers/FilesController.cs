@@ -9,8 +9,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace File_Storage.Controllers
 {
     [Route("[controller]")]
@@ -129,6 +127,45 @@ namespace File_Storage.Controllers
                 System.IO.File.Delete(file.RelativePath);
                 _fileService.DeleteFile(id);
                 return NoContent();
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+        [HttpGet("private/{userId}")]
+        public IEnumerable<StorageFile> GetPrivateFilesByUser(string userId)
+        {
+            return _fileService.GetPrivateFilesByUser(userId);
+        }
+
+        [HttpGet("public/{userId}")]
+        public IEnumerable<StorageFile> GetPublicFilesByUser(string userId)
+        {
+            return _fileService.GetPublicFilesByUser(userId);
+        }
+
+        [HttpPost("setpublic/{fileId}")]
+        public async Task<IActionResult> SetFilePublic(int fileId)
+        {
+            try
+            {
+                await _fileService.SetFilePublic(fileId);
+                return Ok("Status set to Public");
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
+        [HttpPost("setprivate/{fileId}")]
+        public async Task<IActionResult> SetFilePrivate(int fileId)
+        {
+            try
+            {
+                await _fileService.SetFilePrivate(fileId);
+                return Ok("Status set to Private");
             }
             catch (Exception e)
             {

@@ -3,6 +3,7 @@ using FileStorageDAL.Entities;
 using FileStorageDAL.UnitOfWork;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FileStorageBLL.Services
 {
@@ -32,6 +33,26 @@ namespace FileStorageBLL.Services
         public IEnumerable<StorageFile> GetFilesByUser(string userId)
         {
             return _unitOfWork.StorageFiles.GetFilesByUser(userId);
+        }
+
+        public IEnumerable<StorageFile> GetPrivateFilesByUser(string userId)
+        {
+            return _unitOfWork.StorageFiles.GetPrivateFilesByUser(userId);
+        }
+
+        public IEnumerable<StorageFile> GetPublicFilesByUser(string userId)
+        {
+            return _unitOfWork.StorageFiles.GetPublicFilesByUser(userId);
+        }
+
+        public async Task SetFilePrivate(int fileId)
+        {
+            await _unitOfWork.StorageFiles.SetFilePrivate(fileId);
+        }
+
+        public async Task SetFilePublic(int fileId)
+        {
+            await _unitOfWork.StorageFiles.SetFilePublic(fileId);
         }
     }
 }

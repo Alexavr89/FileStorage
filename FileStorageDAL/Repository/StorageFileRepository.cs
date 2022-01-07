@@ -1,11 +1,13 @@
 ﻿using FileStorageDAL.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FileStorageDAL.Repository
 {
@@ -63,6 +65,30 @@ namespace FileStorageDAL.Repository
                 _context.StorageFiles.AddAsync(file);
                 _context.SaveChangesAsync().Wait();
             }
+        }
+
+        public IEnumerable<StorageFile> GetPrivateFilesByUser(string userId)
+        {
+            return _context.StorageFiles.Where(file => !file.IsPublic && file.ApplicationUser.Id == userId);
+        }
+
+        public IEnumerable<StorageFile> GetPublicFilesByUser(string userId)
+        {
+            return _context.StorageFiles.Where(file => file.IsPublic && file.ApplicationUser.Id == userId);
+        }
+
+        public async Task SetFilePublic(int fileId)
+        {
+            var file = _context.StorageFiles.Where(file => file.Id == fileId).FirstOrDefault();
+            file.IsPublic = true;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task SetFilePrivate(int fileId)
+        {
+            var file = _context.StorageFiles.Where(file => file.Id == fileId).FirstOrDefault();
+            file.IsPublic = false;
+            await _context.SaveChangesAsync();
         }
     }
 }
