@@ -19,6 +19,7 @@ export class AppComponent{
   jwtHelper = new JwtHelperService();
   decodedToken: any;
   user : any;
+  role: any;
   loginForm = this.formBuilder.group({
     email: ['',[Validators.required]],
     password: ['',Validators.required]
@@ -52,13 +53,11 @@ export class AppComponent{
       )}
   loggedIn() {
     const token = localStorage.getItem('token')!;
+    this.role = localStorage.getItem('userRole');
     return !this.jwtHelper.isTokenExpired(token);
   }
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('userRole');
+    localStorage.clear();
     this.router.navigate(['/']);
   }
   get email(){
