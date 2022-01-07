@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
 
 @Component({
   selector: 'app-administration',
@@ -27,7 +27,7 @@ export class AdministrationComponent implements OnInit {
   deleteUser(user: any){
     this.httpClient.delete(this.BaseUrl + "users/" + user.id)
     .subscribe(
-      (res)=>{this.getUsers() },
+      (res)=>this.getUsers(),
       (err)=> console.log(err)
     )
   }

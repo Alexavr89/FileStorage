@@ -1,27 +1,35 @@
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
-import { FormBuilder} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-files',
-  templateUrl: './files.component.html',
-  styleUrls: ['./files.component.css']
+  selector: 'app-private',
+  templateUrl: './private.component.html',
+  styleUrls: ['./private.component.css']
 })
-export class FilesComponent implements OnInit {
+export class PrivateComponent implements OnInit {
+
   constructor(private httpClient: HttpClient, private formBuilder: FormBuilder) { }
-  files:any;
-  user:any;
-  userId: any;
   BaseUrl = 'https://localhost:44346/';
+  files:any;
+  userId:any;
 
   ngOnInit(): void {
-    this.getFiles();
+    this.getFiles()
   }
+
   getFiles(){
     this.userId = localStorage.getItem('userId');
-    this.httpClient.get(this.BaseUrl + "files/" + this.userId).subscribe(
+    this.httpClient.get(this.BaseUrl + "files/private/" + this.userId).subscribe(
       (res)=>this.files=res,
       (err)=>console.log(err) 
+    )
+  }
+  setPublic(file:any){
+    const IsPublic = true;
+    this.httpClient.post(this.BaseUrl + "files/setpublic/" + file.id, IsPublic).subscribe(
+      (res)=>this.getFiles(),
+      (err)=>console.log(err)
     )
   }
   deleteFile(file:any){
@@ -43,24 +51,6 @@ export class FilesComponent implements OnInit {
             break;
         }
       },
-      (err)=>console.log(err)
-    )
-  }
-  public uploadFile = (files:any) => {
-    if (files.length === 0) {
-      return;
-    }
-    const httpOptions = {
-      headers: new HttpHeaders({
-      'accept': 'application/json'
-    })
-    }
-    let uploadedFile = <File>files[0];
-    const formData = new FormData();
-    this.user = localStorage.getItem('user');
-    formData.append('uploadedFile', uploadedFile, uploadedFile.name);
-    this.httpClient.post(this.BaseUrl + "files/upload/" + this.user, formData, httpOptions).subscribe(
-      ()=>this.getFiles(),
       (err)=>console.log(err)
     )
   }

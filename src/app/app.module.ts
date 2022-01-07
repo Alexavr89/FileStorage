@@ -8,6 +8,8 @@ import { FilesComponent } from './files/files.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EdituserComponent } from './administration/edituser/edituser.component';
+import { PrivateComponent } from './files/private/private.component';
+import { PublicComponent } from './files/public/public.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { EdituserComponent } from './administration/edituser/edituser.component'
     AdministrationComponent,
     FilesComponent,
     EdituserComponent,
+    PrivateComponent,
+    PublicComponent,
   ],
   imports: [
     BrowserModule,

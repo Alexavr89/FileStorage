@@ -19,7 +19,7 @@
             <label>Role</label>
             <div>
                 <select formControlName="role"> 
-                <option *ngFor="let role of roles" [selected]="role.name === user.role[0]">
+                <option *ngFor="let role of roles" [selected]="role.name === role">
                 {{role.name}}
                 </option>
                 </select>
