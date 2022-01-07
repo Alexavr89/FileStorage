@@ -45,14 +45,14 @@ namespace FileStorageBLL.Services
             return _unitOfWork.StorageFiles.GetPublicFilesByUser(userId);
         }
 
-        public async Task SetFilePrivate(int fileId)
+        public async Task SetFilePrivate(int fileId, bool IsPrivate)
         {
-            await _unitOfWork.StorageFiles.SetFilePrivate(fileId);
+            await _unitOfWork.StorageFiles.SetFilePrivate(fileId, IsPrivate);
         }
 
-        public async Task SetFilePublic(int fileId)
+        public async Task SetFilePublic(int fileId, bool IsPublic)
         {
-            await _unitOfWork.StorageFiles.SetFilePublic(fileId);
+            await _unitOfWork.StorageFiles.SetFilePublic(fileId, IsPublic);
         }
     }
 }

@@ -139,19 +139,30 @@ namespace File_Storage.Controllers
             return _fileService.GetPrivateFilesByUser(userId);
         }
 
+        /// <summary>
+        /// Gets all public files by user
+        /// </summary>
+        /// <param name="userId">Id of user</param>
+        /// <returns>Returns all public files for a particular user</returns>
         [HttpGet("public/{userId}")]
         public IEnumerable<StorageFile> GetPublicFilesByUser(string userId)
         {
             return _fileService.GetPublicFilesByUser(userId);
         }
 
+        /// <summary>
+        /// Set file status as public
+        /// </summary>
+        /// <param name="fileId">Id of file</param>
+        /// <param name="IsPublic">Bool result of file status</param>
+        /// <returns>File status update confirmation</returns>
         [HttpPost("setpublic/{fileId}")]
-        public async Task<IActionResult> SetFilePublic(int fileId)
+        public async Task<IActionResult> SetFilePublic(int fileId, [FromBody]bool IsPublic)
         {
             try
             {
-                await _fileService.SetFilePublic(fileId);
-                return Ok("Status set to Public");
+                await _fileService.SetFilePublic(fileId, IsPublic);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -159,13 +170,19 @@ namespace File_Storage.Controllers
             }
         }
 
+        /// <summary>
+        /// Set file status as private
+        /// </summary>
+        /// <param name="fileId">Id of file</param>
+        /// <param name="IsPrivate">Bool result of file status</param>
+        /// <returns>Change file status to private</returns>
         [HttpPost("setprivate/{fileId}")]
-        public async Task<IActionResult> SetFilePrivate(int fileId)
+        public async Task<IActionResult> SetFilePrivate(int fileId, [FromBody]bool IsPrivate)
         {
             try
             {
-                await _fileService.SetFilePrivate(fileId);
-                return Ok("Status set to Private");
+                await _fileService.SetFilePrivate(fileId, IsPrivate);
+                return Ok();
             }
             catch (Exception e)
             {

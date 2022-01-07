@@ -77,17 +77,17 @@ namespace FileStorageDAL.Repository
             return _context.StorageFiles.Where(file => file.IsPublic && file.ApplicationUser.Id == userId);
         }
 
-        public async Task SetFilePublic(int fileId)
+        public async Task SetFilePublic(int fileId, bool IsPublic)
         {
             var file = _context.StorageFiles.Where(file => file.Id == fileId).FirstOrDefault();
-            file.IsPublic = true;
+            file.IsPublic = IsPublic;
             await _context.SaveChangesAsync();
         }
 
-        public async Task SetFilePrivate(int fileId)
+        public async Task SetFilePrivate(int fileId, bool IsPrivate)
         {
             var file = _context.StorageFiles.Where(file => file.Id == fileId).FirstOrDefault();
-            file.IsPublic = false;
+            file.IsPublic = IsPrivate;
             await _context.SaveChangesAsync();
         }
     }

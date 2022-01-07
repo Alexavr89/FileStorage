@@ -14,7 +14,7 @@ namespace FileStorageDAL.Repository
         void DeleteFile(int id);
         IEnumerable<StorageFile> GetPrivateFilesByUser(string userId);
         IEnumerable<StorageFile> GetPublicFilesByUser(string userId);
-        Task SetFilePublic(int fileId);
-        Task SetFilePrivate(int fileId);
+        Task SetFilePublic(int fileId, bool IsPublic);
+        Task SetFilePrivate(int fileId, bool IsPrivate);
     }
 }
