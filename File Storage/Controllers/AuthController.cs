@@ -3,6 +3,7 @@ using FileStorageBLL.Account;
 using FileStorageBLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApiDemo.Filters;
 using WebApiDemo.Helpers;

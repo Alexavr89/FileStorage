@@ -1,4 +1,5 @@
 ﻿using FileStorageBLL.Interfaces;
+using FileStorageDAL;
 using FileStorageDAL.Entities;
 using FileStorageDAL.UnitOfWork;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -47,8 +49,12 @@ namespace File_Storage.Controllers
                 var file = _unitOfWork.StorageFiles.GetByIdAsync(fileId).Result;
                 if (file == null)
                     return NotFound("There is no file in the system with id :" + $"{fileId}");
-                var result = File(System.IO.File.ReadAllBytes(file.RelativePath), $"{file.Extension}", $"{file.Name}");
-                return result;
+                if (file.IsPublic)
+                {
+                    var result = File(System.IO.File.ReadAllBytes(file.RelativePath), $"{file.Extension}", $"{file.Name}");
+                    return result;
+                }
+                return Unauthorized("Please ask owner for access to this file.");
             }
             catch (Exception e)
             {
@@ -87,7 +93,7 @@ namespace File_Storage.Controllers
         /// Gets files for specified user
         /// </summary>
         /// <param name="userId">Id of specified user</param>
-        /// <returns>Files, that belongs to specific user</returns>
+        /// <returns>Files, that belongs to a specific user</returns>
         [HttpGet("{userId}")]
         public IEnumerable<StorageFile> GetFilesByUser(string userId)
         {
