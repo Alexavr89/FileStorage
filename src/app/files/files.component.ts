@@ -12,6 +12,9 @@ export class FilesComponent implements OnInit {
   files:any;
   user:any;
   userId: any;
+  link:any;
+  totalLength:any;
+  page:number=1;
   BaseUrl = 'https://localhost:44346/';
 
   ngOnInit(): void {
@@ -20,7 +23,7 @@ export class FilesComponent implements OnInit {
   getFiles(){
     this.userId = localStorage.getItem('userId');
     this.httpClient.get(this.BaseUrl + "files/" + this.userId).subscribe(
-      (res)=>this.files=res,
+      (res)=>{this.files=res, this.totalLength=res.toLocaleString.length},
       (err)=>console.log(err) 
     )
   }
@@ -31,20 +34,21 @@ export class FilesComponent implements OnInit {
     )
   }
   shareFile(file:any){
-    this.httpClient.get(this.BaseUrl + "files/download/" + file.id, {
-      observe: 'response',
-      responseType: 'blob'
-  }).subscribe(
-      (data)=> {
-        switch (data.type) {
-          case HttpEventType.Response:
-            const downloadedFile = new Blob([data.body!], { type: data.body!.type });
-            document.getElementById(file.name)!.innerHTML = URL.createObjectURL(downloadedFile);
-            break;
-        }
-      },
-      (err)=>console.log(err)
-    )
+    let popup = document.getElementById("overlay")!;
+    popup.style.position ="absolute";
+    popup.style.opacity =".5";
+    popup.style.zIndex ="998";
+    popup.style.left ="170px";
+    document.getElementById("popup")!.style.display = "block";  
+    this.link = this.BaseUrl + "files/download/" + file.id;
+  }
+  close(){
+    let popup = document.getElementById("overlay")!;
+    popup.style.position ="";
+    popup.style.opacity ="";
+    popup.style.zIndex ="";
+    popup.style.left ="";
+    document.getElementById("popup")!.style.display = "";
   }
   public uploadFile = (files:any) => {
     if (files.length === 0) {

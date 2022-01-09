@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EdituserComponent } from './administration/edituser/edituser.component';
 import { PrivateComponent } from './files/private/private.component';
 import { PublicComponent } from './files/public/public.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { PublicComponent } from './files/public/public.component';
     FilesComponent,
     EdituserComponent,
     PrivateComponent,
-    PublicComponent,
+    PublicComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +28,7 @@ import { PublicComponent } from './files/public/public.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   providers: [
     FormBuilder,

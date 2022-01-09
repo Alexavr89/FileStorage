@@ -1,4 +1,4 @@
-<div class="justify-content-center ml-auto mr-auto w-50">
+<div class="justify-content-center ml-auto mr-auto w-75" id="overlay">
     <input type="file" name="uploadedFile" #uploadedFile (change)="uploadFile(uploadedFile.files)">
     <button type="submit"  class="btn" (click)="uploadedFile.click()">Upload</button>
   <table class="table justify-content-center">
@@ -28,7 +28,10 @@
         </svg>
       </a>
     </td>
-    <span id="{{file.name}}"></span>
   </tr>
   </table>
+</div>
+<div id="popup">
+    <input type="text" id="link" [(ngModel)]='link'>
+    <button class="btn mt-3 btn-primary" (click)="close()" id="close">Close</button>
 </div>

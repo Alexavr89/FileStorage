@@ -12,6 +12,7 @@ export class AdministrationComponent implements OnInit {
   BaseUrl = 'https://localhost:44346/';
   Users: any;
   files: any;
+  link:any;
   ngOnInit(): void {
     this.getUsers();
   }
@@ -38,20 +39,22 @@ export class AdministrationComponent implements OnInit {
     )
   }
   shareFile(file:any){
-    this.httpClient.get(this.BaseUrl + "files/download/" + file.id, {
-      observe: 'response',
-      responseType: 'blob'
-  }).subscribe(
-      (data)=> {
-        switch (data.type) {
-          case HttpEventType.Response:
-            const downloadedFile = new Blob([data.body!], { type: data.body!.type });
-            document.getElementById(file.name)!.innerHTML = URL.createObjectURL(downloadedFile);
-            break;
-        }
-      },
-      (err)=>console.log(err)
-    )
+    let popup = document.getElementById("overlay")!;
+    popup.style.position ="absolute";
+    popup.style.opacity =".5";
+    popup.style.zIndex ="998";
+    popup.style.left ="0px";
+    popup.style.width="100%";
+    document.getElementById("popup")!.style.display = "block";  
+    this.link = this.BaseUrl + "files/download/" + file.id;
+  }
+  close(){
+    let popup = document.getElementById("overlay")!;
+    popup.style.position ="";
+    popup.style.opacity ="";
+    popup.style.zIndex ="";
+    popup.style.left ="";
+    document.getElementById("popup")!.style.display = "";
   }
   getFiles(query:any){
     this.httpClient.get(this.BaseUrl + "files/search/" + query).subscribe(

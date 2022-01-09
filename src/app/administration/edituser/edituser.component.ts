@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-edituser',
@@ -17,6 +18,7 @@ export class EdituserComponent implements OnInit {
   roles: any;
   user: any;
   files: any;
+  link:any;
   editForm=this.formBuilder.group({
     userName: ['', Validators.required],
     email: ['', Validators.email],
@@ -78,20 +80,22 @@ export class EdituserComponent implements OnInit {
     )
   }
   shareFile(file:any){
-    this.httpClient.get(this.BaseUrl + "files/download/" + file.id, {
-      observe: 'response',
-      responseType: 'blob'
-  }).subscribe(
-      (data)=> {
-        switch (data.type) {
-          case HttpEventType.Response:
-            const downloadedFile = new Blob([data.body!], { type: data.body!.type });
-            document.getElementById(file.name)!.innerHTML = URL.createObjectURL(downloadedFile);
-            break;
-        }
-      },
-      (err)=>console.log(err)
-    )
+    let popup = document.getElementById("overlay")!;
+    popup.style.position ="absolute";
+    popup.style.opacity =".5";
+    popup.style.zIndex ="998";
+    popup.style.left ="0px";
+    popup.style.width="100%";
+    document.getElementById("popup")!.style.display = "block";  
+    this.link = this.BaseUrl + "files/download/" + file.id;
+  }
+  close(){
+    let popup = document.getElementById("overlay")!;
+    popup.style.position ="";
+    popup.style.opacity ="";
+    popup.style.zIndex ="";
+    popup.style.left ="";
+    document.getElementById("popup")!.style.display = "";
   }
    get email(){
     return this.editForm.get('email');
