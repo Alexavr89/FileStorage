@@ -1,0 +1,19 @@
+#popup {
+    position: absolute;
+    width:50%;
+    height:25%;
+    background-color:#8DA5C6;
+    z-index: 999;
+    margin-left:25%;
+    display:none;
+}
+input[type="text"]{
+    display:block;
+    width:300px;
+    margin-top:10%;
+    margin-left:auto;
+    margin-right:auto;
+}
+#close{
+    margin-left:300px;
+}

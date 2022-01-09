@@ -1,5 +1,6 @@
-<h1>Public files</h1>
-<div class="justify-content-center ml-auto mr-auto w-75">
+
+<div class="justify-content-center ml-auto mr-auto w-75" id="overlay">
+  <h1>Public files</h1>
     <table class="table justify-content-center">
     <tr>
       <th scope="col">Name</th>
@@ -35,4 +36,8 @@
       <span id="{{file.name}}"></span>
     </tr>
     </table>
+  </div>
+  <div id="popup">
+    <input type="text" id="link" [(ngModel)]='link'>
+    <button class="btn mt-3 btn-primary" (click)="close()" id="close">Close</button>
   </div>
