@@ -30,7 +30,7 @@ export class AdministrationComponent implements OnInit {
   )
   }
   deleteUser(user: any){
-    this.httpClient.delete(this.BaseUrl + "users/" + user.id)
+    this.httpClient.delete(this.BaseUrl + "users/" + user.userId)
     .subscribe(
       (res)=>this.getUsers(),
       (err)=> console.log(err)
@@ -38,7 +38,7 @@ export class AdministrationComponent implements OnInit {
   }
   deleteFile(file:any){
     this.httpClient.delete(this.BaseUrl + "files/" + file.id).subscribe(
-      ()=>this.getFiles(null),
+      ()=>this.getFiles(''),
       (err)=>console.log(err)
     )
   }

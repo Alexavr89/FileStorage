@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
-import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-edituser',
@@ -30,6 +29,7 @@ export class EdituserComponent implements OnInit {
     this.getUser();
     this.getRoles();
     this.getFiles();
+    //this.editForm.controls['userName'].setValue = this.user.user.userName; 
   }
   getUser(){
     this.route.queryParams
@@ -37,7 +37,8 @@ export class EdituserComponent implements OnInit {
       this.userId = params['userId']
     });
     this.httpClient.get(this.BaseUrl + "users/"+this.userId).subscribe(
-      (res)=>this.user = res,
+      (res)=>{this.user = res, this.editForm.controls['userName'].setValue(this.user.user.userName), 
+      this.editForm.controls['email'].setValue(this.user.user.email)},
       (err)=>console.log(err)
     );
   }
@@ -76,7 +77,7 @@ export class EdituserComponent implements OnInit {
     let uploadedFile = <File>files[0];
     const formData = new FormData();
     formData.append('uploadedFile', uploadedFile, uploadedFile.name);
-    this.httpClient.post(this.BaseUrl + "files/upload", formData, httpOptions).subscribe(
+    this.httpClient.post(this.BaseUrl + "files/upload/" + this.user.user.userName, formData, httpOptions).subscribe(
       ()=>this.getFiles(),
       (err)=>console.log(err)
     )
@@ -104,5 +105,8 @@ export class EdituserComponent implements OnInit {
   }
   get userName(){
     return this.editForm.get('userName');
+  }
+  get role(){
+    return this.editForm.get('role');
   }
 }

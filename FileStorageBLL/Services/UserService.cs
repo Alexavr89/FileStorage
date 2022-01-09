@@ -29,11 +29,13 @@ namespace FileStorageBLL.Services
                 Email = user.Email,
                 UserName = user.Email,
             }, user.Password);
-
+            
             if (!result.Succeeded)
             {
                 throw new Exception(string.Join(';', result.Errors.Select(x => x.Description)));
             }
+            var newuser = _userManager.FindByEmailAsync(user.Email).Result;
+           await _userManager.AddToRoleAsync(newuser, "User");
         }
 
         public async Task<ApplicationUser> Logon(Logon logon)
