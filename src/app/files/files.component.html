@@ -9,7 +9,9 @@
     <th scope="col">Is Public</th>
     <th scope="col">Creation Date</th>
   </tr>
-  <tr *ngFor="let file of files">
+  <tr *ngFor="let file of files | paginate : {itemsPerPage: 5, 
+                                              currentPage: page,
+                                              totalItems: totalLength}">
     <td>{{file.name}}</td>
     <td>{{file.size}}</td>
     <td>{{file.extension}}</td>
@@ -30,6 +32,11 @@
     </td>
   </tr>
   </table>
+  <div>
+    <pagination-controls (pageChange)="page = $event"
+    previousLabel=""
+    nextLabel=""></pagination-controls>
+    </div>
 </div>
 <div id="popup">
     <input type="text" id="link" [(ngModel)]='link'>

@@ -23,7 +23,7 @@ export class FilesComponent implements OnInit {
   getFiles(){
     this.userId = localStorage.getItem('userId');
     this.httpClient.get(this.BaseUrl + "files/" + this.userId).subscribe(
-      (res)=>{this.files=res, this.totalLength=res.toLocaleString.length},
+      (res)=>this.files=res,
       (err)=>console.log(err) 
     )
   }

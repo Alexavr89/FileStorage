@@ -14,6 +14,8 @@ export class PrivateComponent implements OnInit {
   files:any;
   userId:any;
   link:any;
+  totalLength:any;
+  page:number=1;
   ngOnInit(): void {
     this.getFiles()
   }

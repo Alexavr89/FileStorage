@@ -19,6 +19,8 @@ export class EdituserComponent implements OnInit {
   user: any;
   files: any;
   link:any;
+  totalLength:any;
+  page:number=1;
   editForm=this.formBuilder.group({
     userName: ['', Validators.required],
     email: ['', Validators.email],
