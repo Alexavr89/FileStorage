@@ -1,0 +1,19 @@
+label, h1{
+    color:#1976d2;
+}
+.btn{
+    background-color: #1976d2;
+    color:white;
+}
+.form-group{
+    margin-left:43%;
+}
+input{
+    border:none;
+    background: #f1f1f1;
+    padding: 7px;
+    margin: 2px 0 2px 0;
+}
+span{
+    margin-left:5px;
+}
