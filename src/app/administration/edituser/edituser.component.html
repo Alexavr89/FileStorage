@@ -43,7 +43,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let file of files">
+        <tr *ngFor="let file of files | paginate : {itemsPerPage: 4, 
+                                                    currentPage: page,
+                                                    totalItems: totalLength}">
           <td>{{file.name}}</td>
           <td>{{file.size}}</td>
           <td>{{file.extension}}</td>
@@ -65,6 +67,9 @@
         </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="page = $event"
+      previousLabel=""
+      nextLabel=""></pagination-controls>
   </div>
 </div>
 <div id="popup">

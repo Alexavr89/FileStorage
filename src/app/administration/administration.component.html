@@ -12,7 +12,10 @@
         <th scope="col">Creation Date</th>
       </thead>
       <tbody>
-        <tr *ngFor="let file of files">
+        <tr *ngFor="let file of files | paginate : {id:'files',
+                                                    itemsPerPage: 4, 
+                                                    currentPage: page,
+                                                    totalItems: totalLength}">
           <td>{{file.name}}</td>
           <td>{{file.size}}</td>
           <td>{{file.extension}}</td>
@@ -31,10 +34,14 @@
               </svg>
             </a>
           </td>
-          <span id="{{file.name}}"></span>
         </tr>
       </tbody>
     </table>
+    <div>
+      <pagination-controls (pageChange)="page = $event"
+      previousLabel=""
+      nextLabel="" id="files"></pagination-controls>
+    </div>
   </div>
   <div class="w-25">
     <table class="table">
@@ -46,7 +53,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of Users">
+        <tr *ngFor="let user of Users | paginate : {id:'users',
+                                                    itemsPerPage: 4, 
+                                                    currentPage: pageUser,
+                                                     totalItems: totalLengthUser}">
           <td>{{user.userName}}</td>
           <td>{{user.roleName}}</td>
           <td>
@@ -66,6 +76,9 @@
         </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="pageUser = $event"
+      previousLabel=""
+      nextLabel="" id="users"></pagination-controls>
   </div>
 </div>
  </div> 

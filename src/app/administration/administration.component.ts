@@ -13,6 +13,10 @@ export class AdministrationComponent implements OnInit {
   Users: any;
   files: any;
   link:any;
+  totalLength:any;
+  page:number=1;
+  pageUser:number=1;
+  totalLengthUser:any;
   ngOnInit(): void {
     this.getUsers();
   }
