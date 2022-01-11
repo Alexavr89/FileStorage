@@ -20,8 +20,7 @@ export class RegistrationComponent implements OnInit {
   registerForm = this.formBuilder.group({
     email: ['', [Validators.required]],
     Password: ['', [Validators.required]],
-    PasswordConfirm:['', Validators.required],
-    year:'',
+    PasswordConfirm:['', Validators.required]
   }, { validator: this.passwordEqualityValidator });
 
   ngOnInit(): void {
