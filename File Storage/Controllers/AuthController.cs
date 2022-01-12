@@ -43,7 +43,7 @@ namespace File_Storage.Controllers
                 {
                     Email = model.Email,
                     Password = model.Password,
-                    Year = model.Year
+                    Name = model.Login
                 });
                 return Created(string.Empty, string.Empty);
             }
@@ -65,7 +65,7 @@ namespace File_Storage.Controllers
             {
                 var user = await _userService.Logon(new Logon
                 {
-                    Email = model.Email,
+                    Login = model.Login,
                     Password = model.Password
                 });
 

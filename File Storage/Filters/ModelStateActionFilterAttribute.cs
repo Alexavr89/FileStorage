@@ -4,6 +4,9 @@ using System;
 
 namespace WebApiDemo.Filters
 {
+    /// <summary>
+    /// ModelState validator attribute
+    /// </summary>
     public class ModelStateActionFilterAttribute : Attribute, IActionFilter
     {
         public void OnActionExecuted(ActionExecutedContext context)

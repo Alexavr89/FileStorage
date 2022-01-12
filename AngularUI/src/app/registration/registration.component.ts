@@ -18,9 +18,10 @@ export class RegistrationComponent implements OnInit {
   }
   BaseUrl = 'https://localhost:44346/';
   registerForm = this.formBuilder.group({
-    email: ['', [Validators.required]],
+    login: ['', [Validators.required]],
     Password: ['', [Validators.required]],
-    PasswordConfirm:['', Validators.required]
+    PasswordConfirm:['', Validators.required],
+    email:['', Validators.email]
   }, { validator: this.passwordEqualityValidator });
 
   ngOnInit(): void {
@@ -35,7 +36,6 @@ export class RegistrationComponent implements OnInit {
       );
     }
   }
-  /** A hero's name can't match the hero's alter ego */
 
   get email(){
     return this.registerForm.get('email');
@@ -45,5 +45,8 @@ export class RegistrationComponent implements OnInit {
   }
   get PasswordConfirm(){
     return this.registerForm.get('PasswordConfirm');
+  }
+  get login(){
+    return this.registerForm.get('login');
   }
 }

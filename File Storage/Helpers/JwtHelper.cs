@@ -9,6 +9,9 @@ using System.Text;
 
 namespace WebApiDemo.Helpers
 {
+    /// <summary>
+    /// Jwt helper custom class
+    /// </summary>
     public static class JwtHelper
     {
         public static string GenerateJwt(ApplicationUser user, IEnumerable<string> roles, JwtSettings jwtSettings)

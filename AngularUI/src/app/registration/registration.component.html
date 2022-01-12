@@ -3,10 +3,10 @@
     <hr />
 <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
     <div class="form-group">
-        <label for="login"><span>Login</span>*</label>
+        <label for="email"><span>Email</span>*</label>
         <div>
-            <input type="text" placeholder="Enter Login" formControlName="email">
-            <span *ngIf="email?.invalid" class="text-danger">Login is required</span>
+            <input type="text" placeholder="Enter Email" formControlName="email">
+            <span *ngIf="email?.invalid" class="text-danger">Email is required</span>
         </div>
     </div>
 
@@ -25,6 +25,15 @@
             <span class="text-danger" *ngIf="registerForm.errors?.['isNotEqual'] && (registerForm?.touched || registerForm?.dirty)">Password and confirm password must be the same</span>
         </div>
     </div>
+
+    <div class="form-group">
+        <label for="Login"><span>Login</span>*</label>
+        <div>
+            <input type="text" placeholder="Login" formControlName="login">
+            <span class="text-danger" *ngIf="login?.invalid">Login is required</span>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <div class="col-md-offset-2">

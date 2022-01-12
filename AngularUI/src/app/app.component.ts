@@ -21,7 +21,7 @@ export class AppComponent{
   user : any;
   role: any;
   loginForm = this.formBuilder.group({
-    email: ['',[Validators.required]],
+    login: ['',[Validators.required]],
     password: ['',Validators.required]
   });
   openForm(){
@@ -60,8 +60,8 @@ export class AppComponent{
     localStorage.clear();
     this.router.navigate(['/']);
   }
-  get email(){
-    return this.loginForm.get('email');
+  get login(){
+    return this.loginForm.get('login');
   }
   get password(){
     return this.loginForm.get('password');

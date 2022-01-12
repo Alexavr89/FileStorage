@@ -27,7 +27,8 @@ namespace FileStorageBLL.Services
             var result = await _userManager.CreateAsync(new ApplicationUser
             {
                 Email = user.Email,
-                UserName = user.Email,
+                UserName = user.Name,
+                Created = DateTime.Now,
             }, user.Password);
             
             if (!result.Succeeded)
@@ -40,8 +41,8 @@ namespace FileStorageBLL.Services
 
         public async Task<ApplicationUser> Logon(Logon logon)
         {
-            var user = _userManager.Users.SingleOrDefault(u => u.UserName == logon.Email);
-            if (user is null) throw new Exception($"User not found: '{logon.Email}'.");
+            var user = _userManager.Users.SingleOrDefault(u => u.UserName == logon.Login);
+            if (user is null) throw new Exception($"User not found: '{logon.Login}'.");
 
             return await _userManager.CheckPasswordAsync(user, logon.Password) ? user : null;
         }
