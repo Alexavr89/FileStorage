@@ -1,0 +1,66 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<div class="toolbar" role="banner">
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi ml-2 bi-hdd-stack-fill" viewBox="0 0 16 16">
+    <path d="M2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/>
+  </svg>
+  <a [routerLink]="['/files']" class="btn">File Storage</a>
+  <a *ngIf="loggedIn()" [routerLink]="['files/private']" class="btn">Private Files</a>
+  <a *ngIf="loggedIn()" [routerLink]="['files/public']" class="btn">Public Files</a>
+    <div class="spacer"></div>
+    <div  *ngIf="loggedIn()">
+      <a class="btn" [routerLink]="['/administration']" *ngIf="role === 'Admin'">Admin</a>
+    </div>
+    <div  *ngIf="loggedIn()">
+      <a class="btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
+  <a class="btn" *ngIf="!loggedIn()" (click)="openForm()">Login</a>
+  <div class="form-popup" id="myForm">
+    <form (ngSubmit)="onSubmit()" class="form-container" [formGroup]="loginForm">
+      <h1>Login</h1>
+      <span id="error" class="text-danger"></span>
+      <label for="login"><span>Login</span></label>
+      <div>
+        <input type="text" placeholder="Enter Login" formControlName="login" id="login">
+        <span *ngIf="login?.invalid" class="text-danger">Login is incorrect</span>
+      </div>
+      <label for="password"><span>Password</span></label>
+      <div>
+        <input type="password" placeholder="Enter Password" formControlName="password" id="password">
+        <span *ngIf="password?.invalid" class="text-danger">Password is required</span>
+      </div>
+      <div>
+        <input type="submit" value="Login" class="btn btn-default" [disabled]="loginForm.invalid"/>
+        <span>Can't login? </span><a [routerLink]="['/registration']" id="signup">Sign Up</a>
+      </div>
+    </form>
+  </div>
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<div class="content" role="main">
+    <h5 *ngIf="!loggedIn()">Welcome to File Storage. Please Login to use our services.</h5>
+    <svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
+      <title>Rocket Ship Smoke</title>
+      <path id="Path_40" data-name="Path 40" d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z" transform="translate(-147.025 -140.939)" fill="#f5f5f5"/>
+    </svg>
+
+  </div>
+
+<router-outlet></router-outlet>
+<footer class="border-top footer"></footer>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+

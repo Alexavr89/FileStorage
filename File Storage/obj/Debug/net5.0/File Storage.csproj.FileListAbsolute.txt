@@ -1,0 +1,179 @@
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\appsettings.json
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\File Storage.exe
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\File Storage.deps.json
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\File Storage.runtimeconfig.json
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\File Storage.runtimeconfig.dev.json
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\File Storage.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\ref\File Storage.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\File Storage.pdb
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Azure.Core.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Azure.Identity.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Azure.Security.KeyVault.Certificates.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Azure.Security.KeyVault.Secrets.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.Identity.Web.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.csproj.AssemblyReference.cache
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.AssemblyInfoInputs.cache
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.AssemblyInfo.cs
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.csproj.CoreCompileInputs.cache
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\scopedcss\bundle\File Storage.styles.css
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\staticwebassets\File Storage.StaticWebAssets.Manifest.cache
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.RazorTargetAssemblyInfo.cache
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.csproj.CopyComplete
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\ref\File Storage.dll
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.pdb
+C:\Users\Alexander\source\repos\File Storage\File Storage\obj\Debug\net5.0\File Storage.genruntimeconfig.cache
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\appsettings.json
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\File Storage.StaticWebAssets.xml
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\File Storage.exe
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\File Storage.deps.json
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\File Storage.runtimeconfig.json
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\File Storage.runtimeconfig.dev.json
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\File Storage.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\ref\File Storage.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\File Storage.pdb
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Azure.Core.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Azure.Identity.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Azure.Security.KeyVault.Certificates.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Azure.Security.KeyVault.Secrets.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\EntityFramework.SqlServer.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\EntityFramework.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Humanizer.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\IdentityModel.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\IdentityServer4.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\IdentityServer4.AspNetIdentity.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\IdentityServer4.EntityFramework.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\IdentityServer4.EntityFramework.Storage.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\IdentityServer4.Storage.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.ApiAuthorization.IdentityServer.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Configuration.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Configuration.CommandLine.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Hosting.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Logging.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Logging.Console.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Logging.Debug.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Logging.EventLog.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Logging.EventSource.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.Identity.Web.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.CodeDom.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Data.SqlClient.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Diagnostics.EventLog.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Runtime.Caching.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Text.Encodings.Web.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\System.Text.Json.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\System.Diagnostics.EventLog.Messages.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\System.Diagnostics.EventLog.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\FileStorageBLL.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\FileStorageDAL.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\FileStorageBLL.pdb
+C:\Users\Alexander\source\repos\file-storage\File Storage\bin\Debug\net5.0\FileStorageDAL.pdb
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.csproj.AssemblyReference.cache
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.AssemblyInfoInputs.cache
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.AssemblyInfo.cs
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.csproj.CoreCompileInputs.cache
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\scopedcss\bundle\File Storage.styles.css
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\staticwebassets\File Storage.StaticWebAssets.Manifest.cache
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\staticwebassets\File Storage.StaticWebAssets.xml
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.RazorTargetAssemblyInfo.cache
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.csproj.CopyComplete
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\ref\File Storage.dll
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.pdb
+C:\Users\Alexander\source\repos\file-storage\File Storage\obj\Debug\net5.0\File Storage.genruntimeconfig.cache

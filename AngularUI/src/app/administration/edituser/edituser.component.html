@@ -1,0 +1,79 @@
+<div class="d-flex" id="overlay">
+<div class="form-horizontal w-25 ml-5">
+    <form (ngSubmit)="updateUser()" [formGroup]="editForm">
+        <div class="form-group">
+            <label>Name</label>
+            <div>
+                <input type="text" formControlName="userName">
+            </div>
+            <span class="text-danger" *ngIf="userName?.invalid">User name is required</span>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <div>
+                <input type="text" formControlName="email">
+            </div>
+            <span class="text-danger" *ngIf="email?.invalid">Email is incorrect</span>
+        </div>
+        <div class="form-group">
+            <label>Role</label>
+            <div>
+                <select formControlName="role">
+                <option disabled selected value> -- select an option -- </option> 
+                <option *ngFor="let role of roles">
+                {{role.name}}
+                </option>
+                </select>
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info" [disabled]="editForm.invalid">Save</button>
+    </form>
+</div>
+<div class="justify-content-center w-75">
+  <input type="file" name="uploadedFile" #uploadedFile (change)="uploadFile(uploadedFile.files)">
+  <button type="submit"  class="btn" (click)="uploadedFile.click()">Upload</button>
+    <table class="table justify-content-center">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Size</th>
+          <th scope="col">Extension</th>
+          <th scope="col">Is Public</th>
+          <th scope="col">Creation Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of files | paginate : {itemsPerPage: 4, 
+                                                    currentPage: page,
+                                                    totalItems: totalLength}">
+          <td>{{file.name}}</td>
+          <td>{{file.size}}</td>
+          <td>{{file.extension}}</td>
+          <td>{{file.isPublic}}</td>
+          <td>{{file.created}}</td>
+          <td>
+            <a class="btn" (click)="shareFile(file)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="black" class="bi bi-share-fill" viewBox="0 0 16 16">
+                <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+              </svg>
+            </a>
+            <a class="btn" (click)="deleteFile(file)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="page = $event"
+      previousLabel=""
+      nextLabel=""></pagination-controls>
+  </div>
+</div>
+<div id="popup">
+  <input type="text" id="link" [(ngModel)]='link'>
+  <button class="btn mt-3 btn-primary" (click)="close()" id="close">Close</button>
+</div>

@@ -1,0 +1,173 @@
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  svg#rocket-smoke {
+    height: calc(100vh - 95px);
+    position: absolute;
+    top: 10px;
+    right: 180px;
+    z-index: -10;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  footer{
+    position:absolute;
+    bottom:0;
+    align-items: center;
+    line-height: 20px;
+    height:50px;
+    width:100%; 
+    background-color:#1976d2;
+  }
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .form-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    margin-top:60px;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #1976d2;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+
+  h1, span{
+    color:#1976d2;
+  }
+  #signup{
+    text-decoration: underline;
+    color:#1976d2;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+  html, body {
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+  }
+   
+  .dropdown-toggle, .dropdown-item{
+      cursor: pointer;
+  }
